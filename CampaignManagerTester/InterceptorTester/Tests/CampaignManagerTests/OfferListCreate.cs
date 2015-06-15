@@ -19,10 +19,15 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 	[TestFixture()]
 	public class OfferListCreate
     {
+		public static string offerIdCreated;
+
+		public static OfferJSON offerJSONCreated;
+
 		[TestFixtureSetUp()]
 		public void setup()
 		{
 			TestGlobals.setup ();
+			offerIdCreated = null;
 		}
 
 		[Test()]
@@ -49,7 +54,19 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
 			Assert.AreEqual ("201", statusCode);
+			offerIdCreated = "123123-123123-123123-1231312";
+			offerJSONCreated = json;
 				
 		}
+
+		public static OfferJSON getOfferJSON()
+		{
+			if (offerIdCreated == null) 
+			{
+				createNewOffer ();
+			}
+			return offerIdCreated;
+		}
+
     }
 }

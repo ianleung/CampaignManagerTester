@@ -3,10 +3,10 @@
 namespace ConsoleApplication1
 {
 
-	public class CampaignManagerJSON
+	public class CampaignManagerFormJSON
 	{
 
-		public CampaignManagerJSON(string OrgId, string Slug, string CamName, string CamDesc, string OfferId, string ConsentTxt)
+		public CampaignManagerFormJSON(string OrgId, string Slug, string CamName, string CamDesc, string OfferId, string ConsentTxt)
 		{
 			this.orgId = OrgId;
 			this.slug = Slug;
@@ -31,9 +31,9 @@ namespace ConsoleApplication1
 		}
 	}
 
-	public class CampaignManagerFieldsJSON
+	public class CampaignManagerFormFieldsJSON
 	{
-		public CampaignManagerFieldsJSON(int Name, bool Required)
+		public CampaignManagerFormFieldsJSON(int Name, bool Required)
 		{
 			this.name = Name;
 			this.required = Required;

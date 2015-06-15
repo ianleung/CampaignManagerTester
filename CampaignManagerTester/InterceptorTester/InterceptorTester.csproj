@@ -136,7 +136,8 @@
     <Compile Include="Tests\AdminTests\InterceptorTest.cs" />
     <Compile Include="Tests\AdminTests\LocationTest.cs" />
     <Compile Include="Tests\AdminTests\OrganizationTest.cs" />
-    <Compile Include="JSON\CampaignManagerJSON.cs" />
+    <Compile Include="JSON\CampaignManagerFormJSON.cs" />
+    <Compile Include="JSON\CampaignSignUpJSON.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

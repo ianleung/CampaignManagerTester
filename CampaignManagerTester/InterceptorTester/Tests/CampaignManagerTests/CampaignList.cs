@@ -24,6 +24,26 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
+        [Test()]
+        public static void getHappyPath()
+        {
+            //Setup strings
+            string applicationKey = TestGlobals.applicationKey;
+            string sessionId = TestGlobals.sessionId;
+            //int
+            string orgId = TestGlobals.orgId;
+
+            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/campaign-manager/Campaigns?"
+            + "applicationKey=" + applicationKey + "&"
+            + "sessionId=" + sessionId + "&"
+            + "orgId=" + orgId, null);
+
+            Test mTest = new Test(request);
+            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
+            Console.WriteLine(HTTPSCalls.result.Value.ToString());
+            Assert.AreEqual("200", HTTPSCalls.result.Value.ToString());
+        }
+
 		[Test()]
 		public static void getSignUpFormsList()
 		{

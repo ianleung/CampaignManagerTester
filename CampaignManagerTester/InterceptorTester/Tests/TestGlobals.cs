@@ -72,7 +72,21 @@ namespace ConsoleApplication1
 				delay = int.Parse(ConfigurationManager.ConnectionStrings["DelayBetweenRuns"].ConnectionString);
                 username = ConfigurationManager.ConnectionStrings["Username"].ConnectionString;
                 password = ConfigurationManager.ConnectionStrings["Password"].ConnectionString;
-				
+
+                slug = ConfigurationManager.ConnectionStrings["slug"].ConnectionString;
+                startDate = ConfigurationManager.ConnectionStrings["startDate"].ConnectionString;
+                endDate = ConfigurationManager.ConnectionStrings["endDate"].ConnectionString;
+                redeemedDate = ConfigurationManager.ConnectionStrings["redeemedDate"].ConnectionString;
+                timeFilter = ConfigurationManager.ConnectionStrings["timeFilter"].ConnectionString;
+                status = ConfigurationManager.ConnectionStrings["status"].ConnectionString;
+                publicationId = ConfigurationManager.ConnectionStrings["publicationId"].ConnectionString;
+                offerId = ConfigurationManager.ConnectionStrings["offerId"].ConnectionString;
+                campaignName = ConfigurationManager.ConnectionStrings["campaignName"].ConnectionString;
+                campaignId = ConfigurationManager.ConnectionStrings["campaignId"].ConnectionString;
+                campaignDescription = ConfigurationManager.ConnectionStrings["campaignDescription"].ConnectionString;
+                couponCode = ConfigurationManager.ConnectionStrings["couponCode"].ConnectionString;
+                date = ConfigurationManager.ConnectionStrings["date"].ConnectionString;
+                issuedDate = ConfigurationManager.ConnectionStrings["issuedDate"].ConnectionString;
 
 				string testRunsString = ConfigurationManager.ConnectionStrings["TimesToRunTests"].ConnectionString;
 				try { maxReps = int.Parse(testRunsString); }

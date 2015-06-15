@@ -24,8 +24,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
-<<<<<<< HEAD
-		public static CampaignManagerFormJSON signUpForm(string orgId)
+		public static CampaignManagerFormJSON postSignUpForm(string orgId)
 		{
 			CampaignManagerFormFieldsJSON[] jsonList = new CampaignManagerFormFieldsJSON[3];
 			jsonList [0] = new CampaignManagerFormFieldsJSON ("email", true);
@@ -36,27 +35,18 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			return camMan;
 		}
 
-=======
-        [Test()]
-        public static void getHappyPath()
-        {
-            //Setup strings
-            string applicationKey = TestGlobals.applicationKey;
-            string sessionId = TestGlobals.sessionId;
-            //int
-            string orgId = TestGlobals.orgId;
+		public static CampaignSignUpJSON signUp()
+		{
+			CampaignSignUpFieldsJSON[] jsonList = new CampaignSignUpFieldsJSON[4];
+			jsonList [0] = new CampaignSignUpFieldsJSON ("email", "newman@usps.com");
+			jsonList [1] = new CampaignSignUpFieldsJSON ("firstName", "Newman");
+			jsonList [2] = new CampaignSignUpFieldsJSON ("lastName", "Newman");
+			jsonList [3] = new CampaignSignUpFieldsJSON ("telephone", "+17185555555");
+			CampaignSignUpJSON camSignUp = new CampaignSignUpJSON ("umbra");
+			camSignUp.fields = jsonList;
+			return camSignUp;
+		}
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/campaign-manager/Campaigns?"
-            + "applicationKey=" + applicationKey + "&"
-            + "sessionId=" + sessionId + "&"
-            + "orgId=" + orgId, null);
-
-            Test mTest = new Test(request);
-            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
-            Console.WriteLine(HTTPSCalls.result.Value.ToString());
-            Assert.AreEqual("200", HTTPSCalls.result.Value.ToString());
-        }
->>>>>>> origin/master
 
 		[Test()]
 		public static void getSignUpFormList()
@@ -71,23 +61,20 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 		}
 
-<<<<<<< HEAD
 		[Test()]
 		public static void createSignUpForms()
 		{
 			string orgIdPassed = OrganizationTest.getOrgId ();
 			string query = "/campaign-manager/SignupForms?orgId=" + orgIdPassed;
-			CampaignManagerFormJSON campaign = signUpForm (orgIdPassed);
+			CampaignManagerFormJSON campaign = postSignUpForm (orgIdPassed);
 			GenericRequest postForm = new GenericRequest (TestGlobals.campaignServer, query, campaign);
-			Test mTest = new Test (campaign);
+			Test mTest = new Test (postForm);
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
 			Assert.AreEqual ("201", statusCode);
 
 		}
-=======
->>>>>>> origin/master
 
 		[Test()]
 		public static void displaySignUpForm()
@@ -99,6 +86,33 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
 			Assert.AreEqual ("200", statusCode);
+		}
+
+		[Test()]
+		public static void newSignUp()
+		{
+			string query = "/campaign-manager/Signups";
+			CampaignSignUpJSON campaign = signUp ();
+			GenericRequest postSignUp = new GenericRequest (TestGlobals.campaignServer, query, campaign);
+			Test mtest = new Test (postSignUp);
+			HttpClient client = new HttpClient ();
+			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mtest, HTTPOperation.POST, client));
+			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+			Assert.AreEqual ("201", statusCode);
+		}
+
+
+		[Test()]
+		public static void optOut()
+		{
+			string query = "/campaign-manager/Signups";
+			SignUpJSON signUp = new SignUpJSON ("george@costanza.com", "umbra");
+			GenericRequest deleteSignUp = new GenericRequest (TestGlobals.campaignServer, query, signUp);
+			Test mtest = new Test (deleteSignUp);
+			HttpClient client = new HttpClient ();
+			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mtest, HTTPOperation.DELETE, client));
+			string statusCode = HTTPSCalls.result.Key.GetValue ("Statuscode").ToString ();
+			Assert.AreEqual("204", statusCode):
 		}
 
     }

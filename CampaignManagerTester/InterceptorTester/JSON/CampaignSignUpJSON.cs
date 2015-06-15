@@ -38,6 +38,18 @@ namespace ConsoleApplication1
 		}
 	}
 
+	public class SignUpJSON
+	{
+		public SignUpJSON(string Email, string Slug)
+		{
+			this.email = Email;
+			this.slug = Slug;
+		}
+
+		public string email;
+		public string slug;
+	}
+
 }
 
 

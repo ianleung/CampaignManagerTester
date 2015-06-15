@@ -26,7 +26,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string sessionId = TestGlobals.sessionId;
             string couponCode = TestGlobals.couponCode;
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/dwh/SubscriberDetails?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/SubscriberDetails?"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId + "&"
             + "couponCode=" + couponCode, null);

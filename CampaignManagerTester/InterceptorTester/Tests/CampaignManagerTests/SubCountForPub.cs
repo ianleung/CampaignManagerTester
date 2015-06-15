@@ -31,7 +31,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
             string date = TestGlobals.date;
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/dwh/SubscriptionsCount?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/SubscriptionsCount?"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId + "&"
             + "publicationId=" + publicationId + "&"

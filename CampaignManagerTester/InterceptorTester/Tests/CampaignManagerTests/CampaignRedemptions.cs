@@ -30,7 +30,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/dwh/Redemptions?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/Redemptions?"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId + "&"
             + "orgId=" + orgId + "&"

@@ -32,7 +32,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //Guid;
             string campaignId = TestGlobals.campaignId;
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/dwh/CampaignSegmentPerformance?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/CampaignSegmentPerformance?"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId + "&"
             + "orgId=" + orgId + "&"

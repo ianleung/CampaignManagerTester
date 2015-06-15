@@ -27,7 +27,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //int;
             string orgId = TestGlobals.orgId.ToString();
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/dwh/SubscriptionCount?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/SubscriptionCount?"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId + "&"
             + "orgId=" + orgId, null);

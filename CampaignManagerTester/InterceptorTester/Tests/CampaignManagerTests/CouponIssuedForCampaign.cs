@@ -27,7 +27,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string slug = TestGlobals.slug;
             string issuedDate = TestGlobals.issuedDate;
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/dwh/CouponsIssued?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/CouponsIssued?"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId + "&"
             + "slug=" + slug + "&"

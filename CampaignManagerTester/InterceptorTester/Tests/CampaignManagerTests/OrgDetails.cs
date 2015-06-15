@@ -26,7 +26,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string applicationKey = TestGlobals.applicationKey;
             string sessionId = TestGlobals.sessionId;
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/campaign-manager/Organizations?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Organizations?"
             + "id=" + id + "&"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId, null);
@@ -52,7 +52,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             json.name = "Umbra";
             json.privacyPolicy = "stuff";
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/campaign-manager/Organizations?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Organizations?"
             + "id=" + id + "&"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId, json);

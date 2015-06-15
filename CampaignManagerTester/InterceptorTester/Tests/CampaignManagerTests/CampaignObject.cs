@@ -25,7 +25,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string applicationKey = TestGlobals.applicationKey;
             string sessionId = TestGlobals.sessionId;
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/campaign-manager/Campaigns?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns?"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId, null);
 
@@ -43,7 +43,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string applicationKey = TestGlobals.applicationKey;
             string sessionId = TestGlobals.sessionId;
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/campaign-manager/Campaigns?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns?"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId, null);
 
@@ -60,7 +60,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string applicationKey = TestGlobals.applicationKey;
             string sessionId = TestGlobals.sessionId;
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/campaign-manager/Campaigns?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns?"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId, null);
 

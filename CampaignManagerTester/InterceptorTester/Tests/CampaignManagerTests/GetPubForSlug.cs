@@ -27,7 +27,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //int;
             string slug = TestGlobals.slug;
 
-            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/dwh/PublicationList?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/PublicationList?"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId + "&"
             + "slug=" + slug, null);

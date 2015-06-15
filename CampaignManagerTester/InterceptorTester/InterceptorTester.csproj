@@ -112,6 +112,9 @@
     <Compile Include="Tests\AdminTests\LocationTest.cs" />
     <Compile Include="API Operations\Interceptor.cs" />
     <Compile Include="JSON\InterceptorJSON.cs" />
+    <Compile Include="Tests\CampaignManagerTests\CampaignRedemptions.cs" />
+    <Compile Include="Tests\CampaignManagerTests\DailyRedemptions.cs" />
+    <Compile Include="Tests\CampaignManagerTests\SegmentPerformance.cs" />
     <Compile Include="Tests\TestGlobals.cs" />
     <Compile Include="Data\UpcCode.cs" />
     <Compile Include="Tests\AdminTests\InterceptorTest.cs" />

@@ -6,7 +6,7 @@ namespace ConsoleApplication1
 	public class CampaignManagerFormJSON
 	{
 
-		public CampaignManagerFormJSON(string OrgId, string Slug, string CamName, string CamDesc, string OfferId, string ConsentTxt)
+		public CampaignManagerFormJSON(int OrgId, string Slug, string CamName, string CamDesc, string OfferId, string ConsentTxt)
 		{
 			this.orgId = OrgId;
 			this.slug = Slug;
@@ -16,7 +16,7 @@ namespace ConsoleApplication1
 			this.consentText = ConsentTxt;
 		}
 
-		public string orgId;
+		public int orgId;
 		public string slug;
 		public string campaignName;
 		public string campaignDescription;

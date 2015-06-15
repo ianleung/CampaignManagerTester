@@ -37,6 +37,19 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Assert.AreEqual("200", statusCode);
 		}
 
-
+		[Test()]
+		public static void createNewOffer()
+		{
+			string query = "campaign-manager/Offers?applicationKey=" + TestGlobals.applicationKey + "&sessionId=" + TestGlobals.sessionId + "&orgId=" + TestGlobals.orgId.ToString ();
+			string orgIdPassed = OrganizationTest.getOrgId ();
+			OfferJSON json = new OfferJSON ("123123-123123-123123-1231312", "10% Offer on next purchase", "Detials on the offer", "12345", Convert.ToInt32 (orgIdPassed), "blah blah blah");
+			GenericRequest postOffer = new GenericRequest (TestGlobals.campaignServer, query, json);
+			Test mTest = new Test (postOffer);
+			HttpClient client = new HttpClient ();
+			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
+			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+			Assert.AreEqual ("201", statusCode);
+				
+		}
     }
 }

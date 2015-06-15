@@ -24,7 +24,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
-		public static CampaignManagerFormJSON postSignUpForm(string orgId)
+		public static CampaignManagerFormJSON postSignUpForm(int orgId)
 		{
 			CampaignManagerFormFieldsJSON[] jsonList = new CampaignManagerFormFieldsJSON[3];
 			jsonList [0] = new CampaignManagerFormFieldsJSON ("email", true);
@@ -66,7 +66,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		{
 			string orgIdPassed = OrganizationTest.getOrgId ();
 			string query = "/campaign-manager/SignupForms?orgId=" + orgIdPassed;
-			CampaignManagerFormJSON campaign = postSignUpForm (orgIdPassed);
+			CampaignManagerFormJSON campaign = postSignUpForm (Convert.ToInt32(orgIdPassed));
 			GenericRequest postForm = new GenericRequest (TestGlobals.campaignServer, query, campaign);
 			Test mTest = new Test (postForm);
 			HttpClient client = new HttpClient ();

@@ -138,6 +138,7 @@
     <Compile Include="Tests\AdminTests\OrganizationTest.cs" />
     <Compile Include="JSON\CampaignManagerFormJSON.cs" />
     <Compile Include="JSON\CampaignSignUpJSON.cs" />
+    <Compile Include="JSON\OfferJSON.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

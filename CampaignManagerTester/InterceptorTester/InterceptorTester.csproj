@@ -98,6 +98,7 @@
     <Compile Include="HTTPCalls.cs" />
     <Compile Include="HTTPSCalls.cs" />
     <Compile Include="JSON\InterceptorIdJSON.cs" />
+    <Compile Include="JSON\OrgUpdateJSON.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Data\DemoScans.cs" />
     <Compile Include="API Operations\Authenticate.cs" />
@@ -184,6 +185,5 @@
   </Target>
   <ItemGroup>
     <Folder Include="Data\ConfigurationSections\" />
-    <Folder Include="Tests\AdminTests\" />
   </ItemGroup>
 </Project>

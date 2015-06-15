@@ -22,7 +22,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void detailsHappyPath()
         {
             //Setup strings
-            string id = TestGlobals.orgId;
+            string id = TestGlobals.orgId.ToString();
             string applicationKey = TestGlobals.applicationKey;
             string sessionId = TestGlobals.sessionId;
 
@@ -41,11 +41,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void updateHappyPath()
         {
             //Setup strings
-            string id = TestGlobals.orgId;
+            string id = TestGlobals.orgId.ToString();
             string applicationKey = TestGlobals.applicationKey;
             string sessionId = TestGlobals.sessionId;
 
-            OrgUpdateJSON json = new OrgUpdateJSON();
+            ConsoleApplication1.OrgUpdateJSON json = new ConsoleApplication1.OrgUpdateJSON();
             json.defaultTermsAndConditions = "Termzan Condit Ions";
             json.id = "1124";
             json.logoUrl = "http://zombo.com";

@@ -25,7 +25,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string applicationKey = TestGlobals.applicationKey;
             string sessionId = TestGlobals.sessionId;
             //int;
-            string orgId = TestGlobals.orgId;
+            string orgId = TestGlobals.orgId.ToString();
             string timeFilter = TestGlobals.timeFilter;
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;

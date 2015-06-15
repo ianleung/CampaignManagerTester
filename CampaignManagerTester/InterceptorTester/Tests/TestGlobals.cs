@@ -35,6 +35,22 @@ namespace ConsoleApplication1
 		public static string sessionId;
 		public static int orgId;
 
+        //TODO: Add these to appconfig
+        public static string slug;
+        public static string startDate;
+        public static string endDate;
+        public static string redeemedDate;
+        public static string timeFilter;
+        public static string status;
+        public static string publicationId;
+        public static string offerId;
+        public static string campaignName;
+        public static string campaignId;
+        public static string campaignDescription;
+        public static string couponCode;
+        public static string date;
+        public static string issuedDate;
+
 		public static void setup()
 		{
 			try

@@ -35,7 +35,7 @@ namespace ConsoleApplication1
 	{
 		public CampaignManagerFormFieldsJSON(int Name, bool Required)
 		{
-			this.name = Name;
+            this.name = Name.ToString();
 			this.required = Required;
 		}
 

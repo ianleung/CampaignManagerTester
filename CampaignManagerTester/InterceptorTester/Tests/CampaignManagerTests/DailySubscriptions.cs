@@ -36,8 +36,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             + "orgId=" + orgId + "&"
             + "timeFilter=" + timeFilter + "&"
             + "startdate=" + startDate + "&"
-            + "enddate=" + endDate + "&"
-            + "campaignId=" + campaignId, null);
+            + "enddate=" + endDate, null);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));

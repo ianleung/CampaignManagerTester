@@ -24,95 +24,48 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
-		public static CampaignManagerFormJSON postSignUpForm(int orgId)
+		public static CampaignJSON newCampaign(string orgIdPassed)
 		{
-			CampaignManagerFormFieldsJSON[] jsonList = new CampaignManagerFormFieldsJSON[3];
-			jsonList [0] = new CampaignManagerFormFieldsJSON ("email", true);
-			jsonList [1] = new CampaignManagerFormFieldsJSON ("firstname", true);
-			jsonList [2] = new CampaignManagerFormFieldsJSON ("lastname", true);
-			CampaignManagerFormJSON camMan = new CampaignManagerFormJSON (orgId, "ABC", "ABC Sign Up Campaign", "All the ABC deals", "123-456-789", "Yes I agree to sign up");
-			camMan.fields = jsonList;
-			return camMan;
-		}
+			CampaignSegmentsJSON[] jsonList = new CampaignSegmentsJSON[3];
+			jsonList [0] = new CampaignSegmentsJSON ("A", "123123-123123-123123-123123");
+			jsonList [1] = new CampaignSegmentsJSON ("B", "123123-123123-123123-123123");
+			jsonList [2] = new CampaignSegmentsJSON ("C", "123123-123123-123123-123123");
 
-		public static CampaignSignUpJSON signUp()
-		{
-			CampaignSignUpFieldsJSON[] jsonList = new CampaignSignUpFieldsJSON[4];
-			jsonList [0] = new CampaignSignUpFieldsJSON ("email", "newman@usps.com");
-			jsonList [1] = new CampaignSignUpFieldsJSON ("firstName", "Newman");
-			jsonList [2] = new CampaignSignUpFieldsJSON ("lastName", "Newman");
-			jsonList [3] = new CampaignSignUpFieldsJSON ("telephone", "+17185555555");
-			CampaignSignUpJSON camSignUp = new CampaignSignUpJSON ("umbra");
-			camSignUp.fields = jsonList;
-			return camSignUp;
+			CampaignJSON camp = new CampaignJSON ("21345-123", "Receive offers on Umbra products", orgIdPassed, "2015-05-31T11:00:00-04:00", "2015-05-31T11:00:00-04:00");
+			camp.segments = jsonList;
+			return camp;
 		}
 
 
 		[Test()]
-		public static void getSignUpFormList()
+		public static void getCampaigns()
 		{
-			string query = "/campaign-manager/SignupForms?orgId=" +TestGlobals.orgIdCreated;
-			GenericRequest getList = new GenericRequest (TestGlobals.campaignServer, query, null);
-			Test mTest = new Test (getList);
+			string query = "campaign-manager/Campaigns?applicationKey=" + TestGlobals.applicationKey + "&sessionId=" + TestGlobals.sessionId + 
+							"&orgId=" + TestGlobals.orgId.ToString();
+			GenericRequest getCam = new GenericRequest (TestGlobals.campaignServer, query, null);
+			Test mTest = new Test (getCam);
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
-			string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
-			Assert.AreEqual("200", statusCode);
+			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+			Assert.AreEqual ("200", statusCode);
 
 		}
 
 		[Test()]
-		public static void createSignUpForms()
+		public static void createCampaign()
 		{
 			string orgIdPassed = OrganizationTest.getOrgId ();
-			string query = "/campaign-manager/SignupForms?orgId=" + orgIdPassed;
-			CampaignManagerFormJSON campaign = postSignUpForm (Convert.ToInt32(orgIdPassed));
-			GenericRequest postForm = new GenericRequest (TestGlobals.campaignServer, query, campaign);
-			Test mTest = new Test (postForm);
+			string query = "campaign-manager/Campaigns?applicationKey=" + TestGlobals.applicationKey + "&sessionId=" + TestGlobals.sessionId + 
+							"&orgId=" + orgIdPassed;
+
+			CampaignJSON camp = newCampaign (orgIdPassed);
+			GenericRequest postCamp = new GenericRequest (TestGlobals.campaignServer, query, camp);
+			Test mTest = new Test (postCamp);
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
 			Assert.AreEqual ("201", statusCode);
 
-		}
-
-		[Test()]
-		public static void displaySignUpForm()
-		{
-			string query = "/campaign-manager/SignupForms/" + "ABC";
-			GenericRequest displayForm = new GenericRequest (TestGlobals.campaignServer, query, null);
-			Test mTest = new Test (displayForm);
-			HttpClient client = new HttpClient ();
-			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
-			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
-			Assert.AreEqual ("200", statusCode);
-		}
-
-		[Test()]
-		public static void newSignUp()
-		{
-			string query = "/campaign-manager/Signups";
-			CampaignSignUpJSON campaign = signUp ();
-			GenericRequest postSignUp = new GenericRequest (TestGlobals.campaignServer, query, campaign);
-			Test mtest = new Test (postSignUp);
-			HttpClient client = new HttpClient ();
-			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mtest, HTTPOperation.POST, client));
-			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
-			Assert.AreEqual ("201", statusCode);
-		}
-
-
-		[Test()]
-		public static void optOut()
-		{
-			string query = "/campaign-manager/Signups";
-			SignUpJSON signUp = new SignUpJSON ("george@costanza.com", "umbra");
-			GenericRequest deleteSignUp = new GenericRequest (TestGlobals.campaignServer, query, signUp);
-			Test mtest = new Test (deleteSignUp);
-			HttpClient client = new HttpClient ();
-			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mtest, HTTPOperation.DELETE, client));
-			string statusCode = HTTPSCalls.result.Key.GetValue ("Statuscode").ToString ();
-			Assert.AreEqual("204", statusCode):
 		}
 
     }

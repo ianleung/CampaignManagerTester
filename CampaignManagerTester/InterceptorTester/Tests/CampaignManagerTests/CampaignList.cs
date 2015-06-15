@@ -24,6 +24,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
+<<<<<<< HEAD
 		public static CampaignManagerFormJSON signUpForm(string orgId)
 		{
 			CampaignManagerFormFieldsJSON[] jsonList = new CampaignManagerFormFieldsJSON[3];
@@ -35,6 +36,27 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			return camMan;
 		}
 
+=======
+        [Test()]
+        public static void getHappyPath()
+        {
+            //Setup strings
+            string applicationKey = TestGlobals.applicationKey;
+            string sessionId = TestGlobals.sessionId;
+            //int
+            string orgId = TestGlobals.orgId;
+
+            GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/campaign-manager/Campaigns?"
+            + "applicationKey=" + applicationKey + "&"
+            + "sessionId=" + sessionId + "&"
+            + "orgId=" + orgId, null);
+
+            Test mTest = new Test(request);
+            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
+            Console.WriteLine(HTTPSCalls.result.Value.ToString());
+            Assert.AreEqual("200", HTTPSCalls.result.Value.ToString());
+        }
+>>>>>>> origin/master
 
 		[Test()]
 		public static void getSignUpFormList()
@@ -49,6 +71,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 		}
 
+<<<<<<< HEAD
 		[Test()]
 		public static void createSignUpForms()
 		{
@@ -63,6 +86,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Assert.AreEqual ("201", statusCode);
 
 		}
+=======
+>>>>>>> origin/master
 
 		[Test()]
 		public static void displaySignUpForm()

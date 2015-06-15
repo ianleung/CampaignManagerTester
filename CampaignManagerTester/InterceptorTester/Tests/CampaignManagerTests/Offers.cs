@@ -56,5 +56,18 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Assert.AreEqual ("200", statusCode);
 		}
 
+		[Test()]
+		public static void removeOffer()
+		{
+			string query = "/campaign-manager/Offers/" + OfferListCreate.offerIdCreated + "?applicationKey=" + TestGlobals.applicationKey
+							+ "&sessionId=" + TestGlobals.sessionId;
+			GenericRequest deleteOffer = new GenericRequest (TestGlobals.campaignServer, query, null);
+			Test mTest = new Test (deleteOffer);
+			HttpClient client = new HttpClient ();
+			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.DELETE, client));
+			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+			Assert.AreEqual ("204", statusCode);
+		}
+
     }
 }

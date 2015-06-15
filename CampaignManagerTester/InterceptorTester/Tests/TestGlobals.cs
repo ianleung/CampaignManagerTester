@@ -18,6 +18,7 @@ namespace ConsoleApplication1
 		public static Uri testServer;
 		public static Uri demoServer;
 		public static Uri adminServer;
+		public static Uri campaignServer;
 		public static string validSerial;
 		public static string demoSerial;
 		public static string invalidSerial;
@@ -39,6 +40,8 @@ namespace ConsoleApplication1
 				//demoServer = new Uri(ConfigurationManager.ConnectionStrings["DemoServer"].ConnectionString);
 
 				demoServer = new Uri("http://cozumointops.cloudapp.net");
+
+				campaignServer = new Uri(ConfigurationManager.ConnectionStrings["CampaignServer"].ConnectionString);
 
 				adminServer = new Uri(ConfigurationManager.ConnectionStrings["AdminServer"].ConnectionString);
 				validSerial = ConfigurationManager.ConnectionStrings["ValidSerial"].ConnectionString;

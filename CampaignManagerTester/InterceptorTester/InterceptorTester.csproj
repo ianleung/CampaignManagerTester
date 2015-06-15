@@ -131,6 +131,11 @@
     <Compile Include="Tests\CampaignManagerTests\SubEmailFromCoupon.cs" />
     <Compile Include="Tests\TestGlobals.cs" />
     <Compile Include="Data\UpcCode.cs" />
+    <Compile Include="Tests\AdminTests\AuthenticateTest.cs" />
+    <Compile Include="Tests\AdminTests\DeviceStatusPutJSON.cs" />
+    <Compile Include="Tests\AdminTests\InterceptorTest.cs" />
+    <Compile Include="Tests\AdminTests\LocationTest.cs" />
+    <Compile Include="Tests\AdminTests\OrganizationTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -162,6 +167,7 @@
     <None Include="bin\Debug\System.Web.Http.dll" />
     <None Include="bin\Debug\nunit.extensions.dll" />
     <None Include="bin\Debug\nunit.framework.dll" />
+    <None Include="Tests\AdminTests\.DS_Store" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -175,5 +181,6 @@
   </Target>
   <ItemGroup>
     <Folder Include="Data\ConfigurationSections\" />
+    <Folder Include="Tests\AdminTests\" />
   </ItemGroup>
 </Project>

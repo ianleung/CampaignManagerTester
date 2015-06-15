@@ -16,7 +16,7 @@ using InterceptorTester.Tests.AdminTests;
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
 	[TestFixture()]
-	class CampaignList
+	public class CampaignList
     {
 		[TestFixtureSetUp()]
 		public void setup()

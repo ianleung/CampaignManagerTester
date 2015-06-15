@@ -31,6 +31,9 @@ namespace ConsoleApplication1
         public static string intIdCreated;
         public static string intSerialCreated;
         public static string logFile = "../../../logs/testLog.txt";
+		public static string applicationKey;
+		public static string sessionId;
+		public static int orgId;
 
 		public static void setup()
 		{

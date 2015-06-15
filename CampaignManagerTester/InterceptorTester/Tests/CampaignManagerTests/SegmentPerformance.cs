@@ -17,6 +17,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         {
             TestGlobals.setup();
         }
+
         [Test()]
         public static void happyPath()
         {
@@ -29,7 +30,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;
             //Guid;
-            string campaignId;
+            string campaignId = TestGlobals.campaignId;
 
             GenericRequest request = new GenericRequest(TestGlobals.adminServer, "/dwh/CampaignSegmentPerformance?"
             + "applicationKey=" + applicationKey + "&"
@@ -41,7 +42,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             + "campaignId=" + campaignId, null);
 
             Test mTest = new Test(request);
-            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.POST));
+            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
             Console.WriteLine(HTTPSCalls.result.Value.ToString());
             Assert.AreEqual("200", HTTPSCalls.result.Value.ToString());
         }

@@ -28,7 +28,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		public static void newSignUp()
 		{
 			string query = "/campaign-manager/Signups";
-			CampaignSignUpJSON campaign = signUp ();
+			CampaignSignUpJSON campaign = new CampaignSignUpJSON(TestGlobals.slug);
 			GenericRequest postSignUp = new GenericRequest (TestGlobals.campaignServer, query, campaign);
 			Test mtest = new Test (postSignUp);
 			HttpClient client = new HttpClient ();

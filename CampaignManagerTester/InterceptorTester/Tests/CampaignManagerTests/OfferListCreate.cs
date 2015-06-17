@@ -61,11 +61,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 		public static OfferJSON getOfferJSON()
 		{
-			if (offerIdCreated == null) 
+			if (offerJSONCreated == null) 
 			{
 				createNewOffer ();
 			}
-			return offerIdCreated;
+			return offerJSONCreated;
 		}
 
     }

@@ -47,6 +47,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+            Console.WriteLine("Status Code: " + statusCode);
 			Assert.AreEqual ("200", statusCode);
 
 		}
@@ -63,7 +64,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Test mTest = new Test (postCamp);
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
-			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+            string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+            Console.WriteLine("Status Code: " + statusCode);
 			Assert.AreEqual ("201", statusCode);
 		}
 
@@ -76,7 +78,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Test mtest = new Test (deleteSignUp);
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mtest, HTTPOperation.DELETE, client));
-			string statusCode = HTTPSCalls.result.Key.GetValue ("Statuscode").ToString ();
+            string statusCode = HTTPSCalls.result.Key.GetValue("Statuscode").ToString();
+            Console.WriteLine("Status Code: " + statusCode);
             Assert.AreEqual("204", statusCode);
 		}
 

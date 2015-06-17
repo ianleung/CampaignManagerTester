@@ -31,8 +31,9 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
-            Console.WriteLine(HTTPSCalls.result.Value.ToString());
-            Assert.AreEqual("200", HTTPSCalls.result.Value.ToString());
+            string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+            Console.WriteLine("Status Code: " + statusCode);
+            Assert.AreEqual("200", statusCode);
         }
 
         //TODO: Do this when API is legible
@@ -49,8 +50,9 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.PUT));
-            Console.WriteLine(HTTPSCalls.result.Value.ToString());
-            Assert.AreEqual("200", HTTPSCalls.result.Value.ToString());
+            string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+            Console.WriteLine("Status Code: " + statusCode);
+            Assert.AreEqual("200", statusCode);
         }
 
         [Test()]
@@ -66,8 +68,9 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.DELETE));
-            Console.WriteLine(HTTPSCalls.result.Value.ToString());
-            Assert.AreEqual("204", HTTPSCalls.result.Value.ToString());
+            string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+            Console.WriteLine("Status Code: " + statusCode);
+            Assert.AreEqual("204", statusCode);
         }
     }
 }

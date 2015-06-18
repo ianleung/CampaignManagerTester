@@ -53,13 +53,14 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             json.name = "Umbra";
             json.privacyPolicy = "stuff";
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Organizations?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Organizations/"
             + "id=" + id + "&"
             + "applicationKey=" + applicationKey + "&"
             + "sessionId=" + sessionId, json);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.PUT));
+            Console.WriteLine(HTTPSCalls.result.ToString());
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
             Assert.AreEqual("200", statusCode);

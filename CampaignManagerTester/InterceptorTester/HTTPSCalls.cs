@@ -315,12 +315,14 @@ namespace ConsoleApplication1{
             try
             {
                 // ... Use HttpClient.
-				using (HttpClient client = new HttpClient())
-                using (HttpResponseMessage response = await client.DeleteAsync(qUri))
+                using (HttpClient client = new HttpClient())
                 {
-                    JObject jResponse = JObject.FromObject(response);
-                    string content = await response.Content.ReadAsStringAsync();
-                    return new KeyValuePair<JObject, string>(jResponse, content);
+                    using (HttpResponseMessage response = await client.DeleteAsync(qUri))
+                    {
+                        JObject jResponse = JObject.FromObject(response);
+                        string content = await response.Content.ReadAsStringAsync();
+                        return new KeyValuePair<JObject, string>(jResponse, content);
+                    }
                 }
             }
             catch (Exception e)

@@ -56,7 +56,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         }
 
         [Test()]
-        public static void deleteHappyPath()
+        public static void removeHappyPath()
         {
             //Setup strings
             string applicationKey = TestGlobals.applicationKey;

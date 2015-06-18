@@ -15,19 +15,19 @@ using ConsoleApplication1;
 
 namespace InterceptorTester.Tests.AdminTests
 {
-	[TestFixture()]
+	//[TestFixture()]
 	public class OrganizationTest
     {
         KeyValuePair<JObject, string> orgStore;
 
-		[TestFixtureSetUp()]
+		//[TestFixtureSetUp()]
         public void setup()
         {
             TestGlobals.setup();
 
         }
 
-        [Test()]
+        //[Test()]
         public static void createOrganization()
         {
             OrganizationJSON json = new OrganizationJSON(999, "TestName");
@@ -42,7 +42,7 @@ namespace InterceptorTester.Tests.AdminTests
             TestGlobals.orgIdCreated = HTTPSCalls.result.Value.Substring(9, HTTPSCalls.result.Value.Length - 10);
         }
 
-        [Test()]
+        //[Test()]
         public void getSingleOrganization()
         {
 			string query = "/api/organization/" + TestGlobals.orgIdCreated;
@@ -57,7 +57,7 @@ namespace InterceptorTester.Tests.AdminTests
         }
 
 
-		[Test()]
+		//[Test()]
 		public void invalidOrgID()
 		{
 			string query = "/api/organization/" + "invalidOrg";
@@ -73,7 +73,7 @@ namespace InterceptorTester.Tests.AdminTests
 
 
 
-		[Test()]
+		//[Test()]
 		public void getMultipleOrganization()
 		{
 			string query = "/api/organization";
@@ -88,7 +88,7 @@ namespace InterceptorTester.Tests.AdminTests
 		}
 			
 
-		[Test()]
+		//[Test()]
 		public void removeOrganization()
 		{
 			string query = "/api/organization/" + TestGlobals.orgIdCreated;
@@ -103,7 +103,7 @@ namespace InterceptorTester.Tests.AdminTests
             Assert.AreEqual("{\"completedSuccessfully\":true}", HTTPSCalls.result.Value);
 		}
 
-		[Test()]
+		//[Test()]
 		public void removingOrgNotFound()
 		{
 			string query = "/api/organization/" + "invalidOrg";
@@ -116,7 +116,7 @@ namespace InterceptorTester.Tests.AdminTests
 			Assert.AreEqual ("404", statusCode);
 		}
 
-		[Test()]
+		//[Test()]
 		public void userLocAssociated()
 		{
 			createOrganization ();

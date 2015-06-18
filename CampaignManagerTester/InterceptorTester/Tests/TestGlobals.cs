@@ -31,9 +31,6 @@ namespace ConsoleApplication1
         public static string intIdCreated;
         public static string intSerialCreated;
         public static string logFile = "../../../logs/testLog.txt";
-		public static string applicationKey;
-		public static string sessionId;
-		public static int orgId;
 
         //TODO: Add these to appconfig
         public static string slug;
@@ -50,6 +47,10 @@ namespace ConsoleApplication1
         public static string couponCode;
         public static string date;
         public static string issuedDate;
+		public static string applicationKey;
+		public static string sessionId;
+		public static int orgId;
+
 
 		public static void setup()
 		{
@@ -87,6 +88,8 @@ namespace ConsoleApplication1
                 couponCode = ConfigurationManager.ConnectionStrings["couponCode"].ConnectionString;
                 date = ConfigurationManager.ConnectionStrings["date"].ConnectionString;
                 issuedDate = ConfigurationManager.ConnectionStrings["issuedDate"].ConnectionString;
+				applicationKey = ConfigurationManager.ConnectionStrings["applicationKey"].ConnectionString;
+				sessionId = ConfigurationManager.ConnectionStrings["sessionId"].ConnectionString;
 
 				string testRunsString = ConfigurationManager.ConnectionStrings["TimesToRunTests"].ConnectionString;
 				try { maxReps = int.Parse(testRunsString); }

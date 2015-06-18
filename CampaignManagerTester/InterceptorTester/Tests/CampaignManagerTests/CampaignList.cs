@@ -36,6 +36,24 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			return camp;
 		}
 
+		[Test()]
+		public static void createCampaign()
+		{
+			string orgIdPassed = OrganizationTest.getOrgId ();
+			string query = "campaign-manager/Campaigns?applicationKey=" + TestGlobals.applicationKey + "&sessionId=" + TestGlobals.sessionId + 
+							"&orgId=" + orgIdPassed;
+
+			CampaignJSON camp = newCampaign (orgIdPassed);
+			GenericRequest postCamp = new GenericRequest (TestGlobals.campaignServer, query, camp);
+			Test mTest = new Test (postCamp);
+			HttpClient client = new HttpClient ();
+			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
+			string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+			Console.WriteLine("Status Code: " + statusCode);
+			Assert.AreEqual ("201", statusCode);
+		}
+
+
 
 		[Test()]
 		public static void getCampaigns()
@@ -50,23 +68,6 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Console.WriteLine("Status Code: " + statusCode);
 			Assert.AreEqual ("200", statusCode);
 
-		}
-
-		[Test()]
-		public static void createCampaign()
-		{
-			string orgIdPassed = OrganizationTest.getOrgId ();
-			string query = "campaign-manager/Campaigns?applicationKey=" + TestGlobals.applicationKey + "&sessionId=" + TestGlobals.sessionId + 
-							"&orgId=" + orgIdPassed;
-
-			CampaignJSON camp = newCampaign (orgIdPassed);
-			GenericRequest postCamp = new GenericRequest (TestGlobals.campaignServer, query, camp);
-			Test mTest = new Test (postCamp);
-			HttpClient client = new HttpClient ();
-			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
-            string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
-            Console.WriteLine("Status Code: " + statusCode);
-			Assert.AreEqual ("201", statusCode);
 		}
 
 		[Test()]

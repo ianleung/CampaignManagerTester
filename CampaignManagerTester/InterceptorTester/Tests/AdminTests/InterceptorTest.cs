@@ -15,12 +15,12 @@ using System.Security.Cryptography;
 
 namespace InterceptorTester.Tests.AdminTests
 {
-	[TestFixture()]
+	//[TestFixture()]
     public class InterceptorTest
     {
         static KeyValuePair<JObject, string> intStore;
 
-		[TestFixtureSetUp()]
+		//[TestFixtureSetUp()]
         public void setup()
         {
             TestGlobals.setup();
@@ -43,7 +43,7 @@ namespace InterceptorTester.Tests.AdminTests
 
 		}
 
-		[Test()]
+		//[Test()]
 		public static void createInterceptor()
 		{
             LocationTest.getLocId();
@@ -64,7 +64,7 @@ namespace InterceptorTester.Tests.AdminTests
 			Console.WriteLine(HTTPSCalls.result.Value.ToString());
 		}
 
-		[Test()]
+		//[Test()]
 		public static void invalidLocID()
 		{
 			string loc = "000";
@@ -85,7 +85,7 @@ namespace InterceptorTester.Tests.AdminTests
 			intStore = HTTPSCalls.result;
 		}
 
-		[Test()]
+		//[Test()]
 		public static void invalidIntSerialID()
 		{
 			string loc = LocationTest.getLocId ();
@@ -137,7 +137,7 @@ namespace InterceptorTester.Tests.AdminTests
             return intId;
         }
 
-		[Test()]
+		//[Test()]
 		public void getSingleInterceptor()
 		{
 			string query = "/API/Interceptor/" + TestGlobals.intSerialCreated;
@@ -152,7 +152,7 @@ namespace InterceptorTester.Tests.AdminTests
 			intStore = HTTPSCalls.result;
 		}
 
-		[Test()]
+		//[Test()]
 		public void invalidIntSerial()
 		{
 			string query = "/API/Interceptor/" + "invalidSerial";
@@ -167,7 +167,7 @@ namespace InterceptorTester.Tests.AdminTests
 			intStore = HTTPSCalls.result;
 		}
 
-		[Test()]
+		//[Test()]
 		public void getMultipleInterceptors()
 		{
 			string query = "/API/Interceptor/?LocId=" + TestGlobals.locIdCreated;
@@ -181,7 +181,7 @@ namespace InterceptorTester.Tests.AdminTests
 			intStore = HTTPSCalls.result;
 		}
 
-		[Test()]
+		//[Test()]
 		public void locNotFound()
 		{
 			string query = "/API/Interceptor/?LocId=" + "invalid";
@@ -196,7 +196,7 @@ namespace InterceptorTester.Tests.AdminTests
 		}
 
 
-		[Test()]
+		//[Test()]
 		public static void intConfigUpdate()
 		{
 			string query = "/API/Interceptor/" + TestGlobals.intSerialCreated;
@@ -211,7 +211,7 @@ namespace InterceptorTester.Tests.AdminTests
 			Assert.AreEqual ("204", statusCode);
 		}
 
-		[Test()]
+		//[Test()]
 		public static void intWifiConfigUpdate()
 		{
 			string query = "/api/interceptor/wifi" + TestGlobals.intSerialCreated;
@@ -231,7 +231,7 @@ namespace InterceptorTester.Tests.AdminTests
 
 
 
-		[Test()]
+		//[Test()]
 		public static void removeInterceptor()
 		{
             disableId(TestGlobals.intSerialCreated);
@@ -252,7 +252,7 @@ namespace InterceptorTester.Tests.AdminTests
 			intStore = HTTPSCalls.result;
 		}
 
-		[Test()]
+		//[Test()]
 		public void removingIntNotFound()
 		{
 			string query = "/api/interceptor/" + "invalidSerial";
@@ -266,7 +266,7 @@ namespace InterceptorTester.Tests.AdminTests
 			intStore = HTTPSCalls.result;
 		}
 
-		[Test()]
+		//[Test()]
 		public void removingIntNotDeactived()
 		{
 			Console.WriteLine ("Trying to delete: " + TestGlobals.intSerialCreated);

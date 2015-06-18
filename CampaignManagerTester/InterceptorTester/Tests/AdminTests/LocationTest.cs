@@ -14,7 +14,7 @@ using ConsoleApplication1;
 
 namespace InterceptorTester.Tests.AdminTests
 {
-	[TestFixture()]
+	//[TestFixture()]
     public class LocationTest
     {
         public static KeyValuePair<JObject, string> locStore;
@@ -22,7 +22,7 @@ namespace InterceptorTester.Tests.AdminTests
 		public static string locIdCreated;
         public static string orgIdPassed;
 
-        [TestFixtureSetUp()]
+        //[TestFixtureSetUp()]
         public void setup()
         {
             TestGlobals.setup();
@@ -46,7 +46,7 @@ namespace InterceptorTester.Tests.AdminTests
 			Console.WriteLine(HTTPSCalls.result.Value.Substring(9, HTTPSCalls.result.Value.Length - 10) + " Written to testGlobals");
 		}
 
-        [Test()]
+        //[Test()]
         public static void createLocation()
         {
             orgIdPassed = OrganizationTest.getOrgId();
@@ -65,7 +65,7 @@ namespace InterceptorTester.Tests.AdminTests
             Console.WriteLine(HTTPSCalls.result.Value.Substring(9, HTTPSCalls.result.Value.Length - 10) + " Written to testGlobals");
         }
 
-		[Test()]
+		//[Test()]
 		public static void invalidOrgID()
 		{
 			orgIdPassed = "invalid";
@@ -83,7 +83,7 @@ namespace InterceptorTester.Tests.AdminTests
 			locStore = HTTPSCalls.result;
 		}
 
-        [Test()]
+        //[Test()]
         public void getSingleLocation()
         {
 			string query = "/API/Location/" + TestGlobals.locIdCreated;
@@ -97,7 +97,7 @@ namespace InterceptorTester.Tests.AdminTests
             locStore = HTTPSCalls.result;
         }
 
-		[Test()]
+		//[Test()]
 		public void invalidLocID()
 		{
 			string query = "/API/Location/" + "invalid";
@@ -112,7 +112,7 @@ namespace InterceptorTester.Tests.AdminTests
 		}
 
 
-		[Test()]
+		//[Test()]
 		public void getMultipleLocations()
 		{
 			string query = "/API/Location/?orgid=" + TestGlobals.orgIdCreated;
@@ -126,7 +126,7 @@ namespace InterceptorTester.Tests.AdminTests
             locStore = HTTPSCalls.result;
 		}
 
-		[Test()]
+		//[Test()]
 		public void orgNotFound()
 		{
 			string query = "/API/Location??orgid=" + "invalid";
@@ -140,7 +140,7 @@ namespace InterceptorTester.Tests.AdminTests
 			locStore = HTTPSCalls.result;
 		}
 
-		[Test()]
+		//[Test()]
 		public void removeLocation()
 		{
 			Console.WriteLine (TestGlobals.locIdCreated);
@@ -157,7 +157,7 @@ namespace InterceptorTester.Tests.AdminTests
 			Console.WriteLine (TestGlobals.locIdCreated);
 		}
 
-		[Test()]
+		//[Test()]
 		public void removingLocNotFound()
 		{
 			string query = "/api/location/" + "invalid";
@@ -170,7 +170,7 @@ namespace InterceptorTester.Tests.AdminTests
 			Assert.AreEqual ("404", statusCode);
 		}
 
-		[Test()]
+		//[Test()]
 		public void intAssociated()
 		{
 			createLocation ();

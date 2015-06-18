@@ -15,18 +15,18 @@ using ConsoleApplication1;
 
 namespace InterceptorTester.Tests.AdminTests
 {
-	[TestFixture()]
+	//[TestFixture()]
 	public class AuthenticateTest
     {
         public static JObject sessionToken;
 
-        [TestFixtureSetUp()]
+        //[TestFixtureSetUp()]
         public void testSetup()
         {
             TestGlobals.setup();
         }
 
-		[Test()]
+		//[Test()]
         public static void generateSessionToken()
 		{
             AuthenticateJSON json = new AuthenticateJSON();
@@ -39,7 +39,7 @@ namespace InterceptorTester.Tests.AdminTests
 			sessionToken = JObject.Parse(HTTPSCalls.result.Value);
         }
 
-        [Test()]
+        //[Test()]
         public void closeSession()
         {
             if (sessionToken != null)

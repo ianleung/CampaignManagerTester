@@ -51,7 +51,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Console.WriteLine("Status Code: " + statusCode);
 			Console.WriteLine (HTTPSCalls.result.Value.Substring(7, 36));
 			TestGlobals.campaignId = HTTPSCalls.result.Value.Substring (7, 36);
-			Assert.AreEqual ("201", statusCode);
+			Assert.AreEqual ("200", statusCode);
 		}
 
 

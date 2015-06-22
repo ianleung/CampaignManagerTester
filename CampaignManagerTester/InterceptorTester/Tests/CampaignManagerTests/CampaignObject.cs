@@ -39,20 +39,36 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
         //TODO: Do this when API is legible
         [Test()]
-        public static void putHappyPath()
+        public static void updateHappyPath()
         {
             //Setup strings
             
+			CampaignList.createCampaign ();
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns?"
-            + "applicationKey=" + TestGlobals.applicationKey + "&"
-            + "sessionKey=" + TestGlobals.sessionKey, null);
+			CampaignJSON campJSON = CampaignList.newCampaign ();
+
+			CampaignSegmentsJSON[] jsonList = new CampaignSegmentsJSON[3];
+			jsonList [0] = new CampaignSegmentsJSON ("A", "e310d9ef-554a-408d-8b8e-2abf28722716");
+			jsonList [1] = new CampaignSegmentsJSON ("B", null);
+			jsonList [2] = new CampaignSegmentsJSON ("C", null);
+
+			CampaignJSON camp = new CampaignJSON (TestGlobals.campaignId, "QA testing update", "This is an update for QA testing", TestGlobals.orgIdWithCampSignedUp, "2015-06-23 14:00", "2015-06-24 14:00");
+			camp.segments = jsonList;
+
+			Console.WriteLine (TestGlobals.campaignId);
+
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns/" + TestGlobals.campaignId + "?"
+            						+ "applicationKey=" + TestGlobals.applicationKey + "&"
+									+ "orgId=" + TestGlobals.orgIdWithCampSignedUp + "&"
+									+ "sessionKey=" + TestGlobals.sessionKey, camp);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.PUT));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
             Assert.AreEqual("200", statusCode);
+
+			removeHappyPath ();
         }
 
         [Test()]

@@ -18,6 +18,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 	[TestFixture()]
 	public class CampaignList
     {
+
 		[TestFixtureSetUp()]
 		public void setup()
 		{

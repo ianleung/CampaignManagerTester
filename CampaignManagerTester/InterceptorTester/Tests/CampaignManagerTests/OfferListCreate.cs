@@ -19,21 +19,16 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 	[TestFixture()]
 	public class OfferListCreate
     {
-		public static string offerIdCreated;
-
-		public static OfferJSON offerJSONCreated;
-
 		[TestFixtureSetUp()]
 		public void setup()
 		{
 			TestGlobals.setup ();
-			offerIdCreated = null;
 		}
 
 		[Test()]
 		public static void getOffers()
 		{
-			string query = "campaign-manager/Offers?applicationKey=" + TestGlobals.applicationKey + "&sessionKey=" + TestGlobals.sessionKey + "&orgId=" + TestGlobals.orgId.ToString ();
+			string query = "campaign-manager/Offers/?applicationKey=" + TestGlobals.applicationKey + "&sessionKey=" + TestGlobals.sessionKey + "&orgId=" + TestGlobals.orgIdWithCampSignedUp;
 			GenericRequest getOffers = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (getOffers);
 			HttpClient client = new HttpClient ();
@@ -45,27 +40,28 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void createNewOffer()
 		{
-			string query = "campaign-manager/Offers?applicationKey=" + TestGlobals.applicationKey + "&sessionKey=" + TestGlobals.sessionKey + "&orgId=" + TestGlobals.orgId.ToString ();
-			string orgIdPassed = OrganizationTest.getOrgId ();
-			OfferJSON json = new OfferJSON ("123123-123123-123123-1231312", "10% Offer on next purchase", "Detials on the offer", "12345", Convert.ToInt32 (orgIdPassed), "blah blah blah");
+			string query = "campaign-manager/Offers/?applicationKey=" + TestGlobals.applicationKey 
+							+ "&sessionKey=" + TestGlobals.sessionKey 
+							+ "&orgId=" + TestGlobals.orgIdWithCampSignedUp;
+			OfferJSON json = new OfferJSON ("new offer for QA testing", TestGlobals.orgIdWithCampSignedUp, "123", "blah blah blah");
 			GenericRequest postOffer = new GenericRequest (TestGlobals.campaignServer, query, json);
 			Test mTest = new Test (postOffer);
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+			Console.WriteLine (HTTPSCalls.result.Value.Substring (7, 36));
+			TestGlobals.offerId = HTTPSCalls.result.Value.Substring (7, 36);
 			Assert.AreEqual ("201", statusCode);
-			offerIdCreated = "123123-123123-123123-1231312";
-			offerJSONCreated = json;
 				
 		}
 
-		public static OfferJSON getOfferJSON()
+		public static string getOfferJSON()
 		{
-			if (offerJSONCreated == null) 
+			if (TestGlobals.offerId == null) 
 			{
 				createNewOffer ();
 			}
-			return offerJSONCreated;
+			return TestGlobals.offerId;
 		}
 
     }

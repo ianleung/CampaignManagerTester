@@ -27,8 +27,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void getSpecialOffer()
 		{
-			string query = "/campaign-manager/Offers/" + OfferListCreate.offerIdCreated + "?applicationKey=" + TestGlobals.applicationKey
-			               + "&sessionKey=" + TestGlobals.sessionKey;
+			string query = "/campaign-manager/Offers/" + TestGlobals.offerId + "?applicationKey=" + TestGlobals.applicationKey
+							+ "&sessionKey=" + TestGlobals.sessionKey + "&orgId=" + TestGlobals.orgIdWithCampSignedUp;
 			GenericRequest getOffer = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (getOffer);
 			HttpClient client = new HttpClient ();
@@ -39,14 +39,16 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		}
 
 		[Test()]
-		public static void modifyOffer()
+		public static void updateOffer()
 		{
-			OfferJSON json = OfferListCreate.getOfferJSON ();
+			OfferListCreate.createNewOffer ();
 
-			string query = "/campaign-manager/Offers/" + OfferListCreate.offerIdCreated + "?applicationKey=" + TestGlobals.applicationKey
+			Console.WriteLine (TestGlobals.offerId);
+
+			string query = "/campaign-manager/Offers/" + TestGlobals.offerId + "?applicationKey=" + TestGlobals.applicationKey
 							+ "&sessionKey=" + TestGlobals.sessionKey;
-			
-			json.name = "50% Offer on next purchase";
+
+			OfferJSON json = new OfferJSON ("new offer for QA testing", TestGlobals.orgIdWithCampSignedUp, "456", "blah blah blah");
 
 			GenericRequest putOffer = new GenericRequest (TestGlobals.campaignServer, query, json);
 			Test mTest = new Test (putOffer);
@@ -59,7 +61,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void removeOffer()
 		{
-			string query = "/campaign-manager/Offers/" + OfferListCreate.offerIdCreated + "?applicationKey=" + TestGlobals.applicationKey
+			string query = "/campaign-manager/Offers/" + TestGlobals.offerId + "?applicationKey=" + TestGlobals.applicationKey
 							+ "&sessionKey=" + TestGlobals.sessionKey;
 			GenericRequest deleteOffer = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (deleteOffer);

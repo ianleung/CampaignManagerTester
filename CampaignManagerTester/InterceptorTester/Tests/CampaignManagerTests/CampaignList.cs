@@ -39,7 +39,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void createCampaign()
 		{
-			string query = "campaign-manager/Campaigns?applicationKey=" + TestGlobals.applicationKey + "&sessionId=" + TestGlobals.sessionKey + 
+			string query = "campaign-manager/Campaigns/?applicationKey=" + TestGlobals.applicationKey + "&sessionKey=" + TestGlobals.sessionKey + 
 							"&orgId=" + TestGlobals.orgIdWithCampSignedUp;
 
 			CampaignJSON camp = newCampaign ();
@@ -49,6 +49,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
 			Console.WriteLine("Status Code: " + statusCode);
+			Console.WriteLine (HTTPSCalls.result.Value.Substring(7, 36));
+			TestGlobals.campaignId = HTTPSCalls.result.Value.Substring (7, 36);
 			Assert.AreEqual ("201", statusCode);
 		}
 

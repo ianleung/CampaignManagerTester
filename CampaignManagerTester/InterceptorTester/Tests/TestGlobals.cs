@@ -85,7 +85,6 @@ namespace ConsoleApplication1
                 publicationId = ConfigurationManager.ConnectionStrings["publicationId"].ConnectionString;
                 offerId = ConfigurationManager.ConnectionStrings["offerId"].ConnectionString;
                 campaignName = ConfigurationManager.ConnectionStrings["campaignName"].ConnectionString;
-                campaignId = ConfigurationManager.ConnectionStrings["campaignId"].ConnectionString;
                 campaignDescription = ConfigurationManager.ConnectionStrings["campaignDescription"].ConnectionString;
                 couponCode = ConfigurationManager.ConnectionStrings["couponCode"].ConnectionString;
                 date = ConfigurationManager.ConnectionStrings["date"].ConnectionString;

@@ -60,6 +60,9 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         {
             //Setup strings
             
+			//CampaignList.createCampaign ();
+			Console.WriteLine (TestGlobals.campaignId);
+
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns/" + TestGlobals.campaignId+ "?"
             + "applicationKey=" + TestGlobals.applicationKey + "&"
 			+ "orgId=" + TestGlobals.orgIdWithCampSignedUp + "&"

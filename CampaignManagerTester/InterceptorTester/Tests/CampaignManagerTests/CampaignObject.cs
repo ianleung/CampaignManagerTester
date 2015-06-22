@@ -16,6 +16,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public void setup()
         {
             TestGlobals.setup();
+
         }
 
         [Test()]
@@ -23,11 +24,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         {
             //Setup strings
             string applicationKey = TestGlobals.applicationKey;
-            string sessionId = TestGlobals.sessionId;
+			string sessionKey = TestGlobals.sessionKey;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns?"
-            + "applicationKey=" + applicationKey + "&"
-            + "sessionId=" + sessionId, null);
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns/?"
+            + "applicationKey=" + TestGlobals.applicationKey + "&"
+            + "sessionKey=" + TestGlobals.sessionKey, null);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
@@ -41,12 +42,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void putHappyPath()
         {
             //Setup strings
-            string applicationKey = TestGlobals.applicationKey;
-            string sessionId = TestGlobals.sessionId;
+            
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns?"
-            + "applicationKey=" + applicationKey + "&"
-            + "sessionId=" + sessionId, null);
+            + "applicationKey=" + TestGlobals.applicationKey + "&"
+            + "sessionKey=" + TestGlobals.sessionKey, null);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.PUT));
@@ -59,12 +59,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void removeHappyPath()
         {
             //Setup strings
-            string applicationKey = TestGlobals.applicationKey;
-            string sessionId = TestGlobals.sessionId;
-
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns?"
-            + "applicationKey=" + applicationKey + "&"
-            + "sessionId=" + sessionId, null);
+            
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns/" + TestGlobals.campaignId+ "?"
+            + "applicationKey=" + TestGlobals.applicationKey + "&"
+			+ "orgId=" + TestGlobals.orgIdWithCampSignedUp + "&"
+            + "sessionKey=" + TestGlobals.sessionKey, null);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.DELETE));

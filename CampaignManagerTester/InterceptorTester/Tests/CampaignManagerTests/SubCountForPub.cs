@@ -23,7 +23,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         {
             //Setup strings
             string applicationKey = TestGlobals.applicationKey;
-            string sessionId = TestGlobals.sessionId;
+            string sessionKey = TestGlobals.sessionKey;
             //Guid
             string publicationId = TestGlobals.publicationId;
             //int
@@ -33,7 +33,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/SubscriptionsCount?"
             + "applicationKey=" + applicationKey + "&"
-            + "sessionId=" + sessionId + "&"
+            + "sessionKey=" + sessionKey + "&"
             + "publicationId=" + publicationId + "&"
             + "status=" + status + "&"
             + "date=" + date, null);

@@ -24,12 +24,12 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //Setup strings
             string id = TestGlobals.orgId.ToString();
             string applicationKey = TestGlobals.applicationKey;
-            string sessionId = TestGlobals.sessionId;
+            string sessionKey = TestGlobals.sessionKey;
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Organizations?"
             + "id=" + id + "&"
             + "applicationKey=" + applicationKey + "&"
-            + "sessionId=" + sessionId, null);
+            + "sessionKey=" + sessionKey, null);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
@@ -44,7 +44,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //Setup strings
             string id = TestGlobals.orgId.ToString();
             string applicationKey = TestGlobals.applicationKey;
-            string sessionId = TestGlobals.sessionId;
+            string sessionKey = TestGlobals.sessionKey;
 
             ConsoleApplication1.OrgUpdateJSON json = new ConsoleApplication1.OrgUpdateJSON();
             json.defaultTermsAndConditions = "Termzan Condit Ions";
@@ -56,7 +56,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Organizations/"
             + "id=" + id + "&"
             + "applicationKey=" + applicationKey + "&"
-            + "sessionId=" + sessionId, json);
+            + "sessionKey=" + sessionKey, json);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.PUT));

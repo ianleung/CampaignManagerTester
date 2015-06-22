@@ -23,12 +23,12 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         {
             //Setup strings
             string applicationKey = TestGlobals.applicationKey;
-            string sessionId = TestGlobals.sessionId;
+            string sessionKey = TestGlobals.sessionKey;
             string couponCode = TestGlobals.couponCode;
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/SubscriberDetails?"
             + "applicationKey=" + applicationKey + "&"
-            + "sessionId=" + sessionId + "&"
+            + "sessionKey=" + sessionKey + "&"
             + "couponCode=" + couponCode, null);
 
             Test mTest = new Test(request);

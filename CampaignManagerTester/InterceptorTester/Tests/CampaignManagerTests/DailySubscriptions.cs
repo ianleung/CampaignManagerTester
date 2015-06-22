@@ -23,7 +23,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         {
             //Setup strings
             string applicationKey = TestGlobals.applicationKey;
-            string sessionId = TestGlobals.sessionId;
+            string sessionKey = TestGlobals.sessionKey;
             //int;
             string orgId = TestGlobals.orgId.ToString();
             string timeFilter = TestGlobals.timeFilter;
@@ -32,7 +32,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/SubscriptionsDaily?"
             + "applicationKey=" + applicationKey + "&"
-            + "sessionId=" + sessionId + "&"
+            + "sessionKey=" + sessionKey + "&"
             + "orgId=" + orgId + "&"
             + "timeFilter=" + timeFilter + "&"
             + "startdate=" + startDate + "&"

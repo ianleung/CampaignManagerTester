@@ -48,8 +48,10 @@ namespace ConsoleApplication1
         public static string date;
         public static string issuedDate;
 		public static string applicationKey;
-		public static string sessionId;
+		public static string sessionKey;
 		public static int orgId;
+
+		public static string orgIdWithCampSignedUp;
 
 
 		public static void setup()
@@ -89,7 +91,9 @@ namespace ConsoleApplication1
                 date = ConfigurationManager.ConnectionStrings["date"].ConnectionString;
                 issuedDate = ConfigurationManager.ConnectionStrings["issuedDate"].ConnectionString;
 				applicationKey = ConfigurationManager.ConnectionStrings["applicationKey"].ConnectionString;
-				sessionId = ConfigurationManager.ConnectionStrings["sessionId"].ConnectionString;
+				sessionKey = ConfigurationManager.ConnectionStrings["sessionKey"].ConnectionString;
+
+				orgIdWithCampSignedUp = "2238";
 
 				string testRunsString = ConfigurationManager.ConnectionStrings["TimesToRunTests"].ConnectionString;
 				try { maxReps = int.Parse(testRunsString); }

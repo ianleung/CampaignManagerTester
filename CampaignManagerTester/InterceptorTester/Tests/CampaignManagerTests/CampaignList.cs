@@ -24,14 +24,14 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
-		public static CampaignJSON newCampaign(string orgIdPassed)
+		public static CampaignJSON newCampaign()
 		{
 			CampaignSegmentsJSON[] jsonList = new CampaignSegmentsJSON[3];
-			jsonList [0] = new CampaignSegmentsJSON ("A", "123123-123123-123123-123123");
-			jsonList [1] = new CampaignSegmentsJSON ("B", "123123-123123-123123-123123");
-			jsonList [2] = new CampaignSegmentsJSON ("C", "123123-123123-123123-123123");
+			jsonList [0] = new CampaignSegmentsJSON ("A", "e8141292-7f20-467a-b905-20261c5a8306");
+			jsonList [1] = new CampaignSegmentsJSON ("B", null);
+			jsonList [2] = new CampaignSegmentsJSON ("C", null);
 
-			CampaignJSON camp = new CampaignJSON ("21345-123", "Receive offers on Umbra products", orgIdPassed, "2015-05-31T11:00:00-04:00", "2015-05-31T11:00:00-04:00");
+			CampaignJSON camp = new CampaignJSON (TestGlobals.campaignId, "QA testing", "This is a campaign for QA testing", TestGlobals.orgIdWithCampSignedUp, "2015-06-23 14:00", "2015-06-24 14:00");
 			camp.segments = jsonList;
 			return camp;
 		}
@@ -39,11 +39,10 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void createCampaign()
 		{
-			string orgIdPassed = OrganizationTest.getOrgId ();
-			string query = "campaign-manager/Campaigns?applicationKey=" + TestGlobals.applicationKey + "&sessionId=" + TestGlobals.sessionId + 
-							"&orgId=" + orgIdPassed;
+			string query = "campaign-manager/Campaigns?applicationKey=" + TestGlobals.applicationKey + "&sessionId=" + TestGlobals.sessionKey + 
+							"&orgId=" + TestGlobals.orgIdWithCampSignedUp;
 
-			CampaignJSON camp = newCampaign (orgIdPassed);
+			CampaignJSON camp = newCampaign ();
 			GenericRequest postCamp = new GenericRequest (TestGlobals.campaignServer, query, camp);
 			Test mTest = new Test (postCamp);
 			HttpClient client = new HttpClient ();
@@ -54,7 +53,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		}
 
 
-
+		/*
 		[Test()]
 		public static void getCampaigns()
 		{
@@ -69,6 +68,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Assert.AreEqual ("200", statusCode);
 
 		}
+		*/
 
 		[Test()]
 		public static void optOut()

@@ -28,7 +28,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		public static void getSpecialOffer()
 		{
 			string query = "/campaign-manager/Offers/" + OfferListCreate.offerIdCreated + "?applicationKey=" + TestGlobals.applicationKey
-			               + "&sessionId=" + TestGlobals.sessionId;
+			               + "&sessionKey=" + TestGlobals.sessionKey;
 			GenericRequest getOffer = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (getOffer);
 			HttpClient client = new HttpClient ();
@@ -44,7 +44,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			OfferJSON json = OfferListCreate.getOfferJSON ();
 
 			string query = "/campaign-manager/Offers/" + OfferListCreate.offerIdCreated + "?applicationKey=" + TestGlobals.applicationKey
-							+ "&sessionId=" + TestGlobals.sessionId;
+							+ "&sessionKey=" + TestGlobals.sessionKey;
 			
 			json.name = "50% Offer on next purchase";
 
@@ -60,7 +60,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		public static void removeOffer()
 		{
 			string query = "/campaign-manager/Offers/" + OfferListCreate.offerIdCreated + "?applicationKey=" + TestGlobals.applicationKey
-							+ "&sessionId=" + TestGlobals.sessionId;
+							+ "&sessionKey=" + TestGlobals.sessionKey;
 			GenericRequest deleteOffer = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (deleteOffer);
 			HttpClient client = new HttpClient ();

@@ -6,10 +6,11 @@ namespace ConsoleApplication1
 	public class CampaignJSON
 	{
 
-		public CampaignJSON(string ID, string Name, string OrgID, string sDate, string eDate)
+		public CampaignJSON(string ID, string Name, string desc, string OrgID, string sDate, string eDate)
 		{
 			id = ID;
 			name = Name;
+			description = desc;
 			orgId = OrgID;
 			startDate = sDate;
 			endDate = eDate;

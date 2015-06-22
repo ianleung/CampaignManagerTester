@@ -23,13 +23,13 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         {
             //Setup strings
             string applicationKey = TestGlobals.applicationKey;
-            string sessionId = TestGlobals.sessionId;
+            string sessionKey = TestGlobals.sessionKey;
             string slug = TestGlobals.slug;
             string issuedDate = TestGlobals.issuedDate;
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/CouponsIssued?"
             + "applicationKey=" + applicationKey + "&"
-            + "sessionId=" + sessionId + "&"
+            + "sessionKey=" + sessionKey + "&"
             + "slug=" + slug + "&"
             + "issuedDate=" + issuedDate, null);
 

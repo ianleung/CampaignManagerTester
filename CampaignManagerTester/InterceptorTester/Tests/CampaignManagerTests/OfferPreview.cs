@@ -23,7 +23,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         {
             //Setup strings
             string applicationKey = TestGlobals.applicationKey;
-            string sessionId = TestGlobals.sessionId;
+            string sessionKey = TestGlobals.sessionKey;
             //Guid;
             string id = TestGlobals.offerId;
             //string
@@ -32,7 +32,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Offers/"+id+"/Preview/?applicationKey="+applicationKey+"&sessionId="+sessionId+"&campaignName="+campaignName+"&campaignDescription="+campaignDescription+"&startDate="+startDate+"&endDate="+endDate, null);
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Offers/"+id+"/Preview/?applicationKey="+applicationKey+"&sessionKey="+sessionKey+"&campaignName="+campaignName+"&campaignDescription="+campaignDescription+"&startDate="+startDate+"&endDate="+endDate, null);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));

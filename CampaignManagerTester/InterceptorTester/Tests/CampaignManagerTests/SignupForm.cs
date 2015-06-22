@@ -72,6 +72,9 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+            Console.WriteLine(statusCode);
+            Console.WriteLine(HTTPSCalls.result.Key);
+            Console.WriteLine(HTTPSCalls.result.Value);
 			Assert.AreEqual ("201", statusCode);
 
 		}

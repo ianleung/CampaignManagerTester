@@ -27,7 +27,9 @@ namespace ConsoleApplication1
 
 		public override string ToString()
 		{
-			return "";
+			return "orgId: " + orgId + "\n" + "slug: " + slug + "\n" + "campaignName: " + campaignName + "\n" +
+            "campaignDescription: " + campaignDescription + "\n" + "offerId: " + offerId + "\n" + 
+            "consentText: " + consentText + "\n" + "fields: " + fields.ToString() + "\n";
 		}
 	}
 

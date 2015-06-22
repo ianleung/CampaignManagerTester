@@ -137,7 +137,7 @@ namespace InterceptorTester.Tests.AdminTests
 
         public static string getOrgId()
         {
-            if (TestGlobals.orgIdCreated == null)
+            if (TestGlobals.orgIdCreated == null || TestGlobals.orgIdCreated.Equals(""))
             {
                 createOrganization();
             }

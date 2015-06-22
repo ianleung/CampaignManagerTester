@@ -30,7 +30,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			jsonList [0] = new CampaignManagerFormFieldsJSON ("email", true);
 			jsonList [1] = new CampaignManagerFormFieldsJSON ("firstname", true);
 			jsonList [2] = new CampaignManagerFormFieldsJSON ("lastname", true);
-			CampaignManagerFormJSON camMan = new CampaignManagerFormJSON (orgId, "ABC", "ABC Sign Up Campaign", "All the ABC deals", "123-456-789", "Yes I agree to sign up");
+			CampaignManagerFormJSON camMan = new CampaignManagerFormJSON (orgId, "ABC", "ABC Sign Up Campaign", "All the ABC deals", TestGlobals.offerId, "Yes I agree to sign up");
 			camMan.fields = jsonList;
 			return camMan;
 		}
@@ -68,6 +68,9 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			string query = "/campaign-manager/SignupForms?orgId=" + orgIdPassed;
 			CampaignManagerFormJSON campaign = postSignUpForm (Convert.ToInt32(orgIdPassed));
 			GenericRequest postForm = new GenericRequest (TestGlobals.campaignServer, query, campaign);
+
+            Console.WriteLine(postForm.getJson().ToString());
+
 			Test mTest = new Test (postForm);
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
@@ -76,7 +79,6 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Console.WriteLine(HTTPSCalls.result.Key);
             Console.WriteLine(HTTPSCalls.result.Value);
 			Assert.AreEqual ("201", statusCode);
-
 		}
 
 		[Test()]

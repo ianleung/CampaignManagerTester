@@ -83,6 +83,7 @@ namespace ConsoleApplication1
                 timeFilter = ConfigurationManager.ConnectionStrings["timeFilter"].ConnectionString;
                 status = ConfigurationManager.ConnectionStrings["status"].ConnectionString;
                 publicationId = ConfigurationManager.ConnectionStrings["publicationId"].ConnectionString;
+                offerId = ConfigurationManager.ConnectionStrings["offerId"].ConnectionString;
                 campaignName = ConfigurationManager.ConnectionStrings["campaignName"].ConnectionString;
                 campaignDescription = ConfigurationManager.ConnectionStrings["campaignDescription"].ConnectionString;
                 couponCode = ConfigurationManager.ConnectionStrings["couponCode"].ConnectionString;

@@ -39,13 +39,14 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		}
 
 		[Test()]
-		public static void updateOffer()
+		public static void modifyOffer()
 		{
-			OfferListCreate.createNewOffer ();
+			//OfferListCreate.createNewOffer ();
 
 			Console.WriteLine (TestGlobals.offerId);
 
 			string query = "/campaign-manager/Offers/" + TestGlobals.offerId + "?applicationKey=" + TestGlobals.applicationKey
+							+ "&orgId=" + TestGlobals.orgIdWithCampSignedUp
 							+ "&sessionKey=" + TestGlobals.sessionKey;
 
 			OfferJSON json = new OfferJSON ("new offer for QA testing", TestGlobals.orgIdWithCampSignedUp, "456", "blah blah blah");

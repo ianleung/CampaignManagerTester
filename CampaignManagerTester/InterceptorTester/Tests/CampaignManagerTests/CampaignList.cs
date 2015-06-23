@@ -73,20 +73,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		}
 		*/
 
-		[Test()]
-		public static void optOut()
-		{
-			string query = "/campaign-manager/Signups";
-			SignUpJSON signUp = new SignUpJSON ("george@costanza.com", "umbra");
-			GenericRequest deleteSignUp = new GenericRequest (TestGlobals.campaignServer, query, signUp);
-			Test mtest = new Test (deleteSignUp);
-			HttpClient client = new HttpClient ();
-			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mtest, HTTPOperation.DELETE));
-            Console.WriteLine (HTTPCalls.result.ToString());
-            string statusCode = HTTPSCalls.result.Key.GetValue("Statuscode").ToString();
-            Console.WriteLine("Status Code: " + statusCode);
-            Assert.AreEqual("204", statusCode);
-		}
+
 
     }
 }

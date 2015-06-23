@@ -19,7 +19,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         }
 
         [Test()]
-        public static void detailsHappyPath()
+        public static void orgDetailsHappyPath()
         {
             //Setup strings
             string id = TestGlobals.orgId.ToString();
@@ -39,7 +39,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         }
 
         [Test()]
-        public static void updateHappyPath()
+        public static void orgUpdateHappyPath()
         {
             //Setup strings
             string id = TestGlobals.orgId.ToString();

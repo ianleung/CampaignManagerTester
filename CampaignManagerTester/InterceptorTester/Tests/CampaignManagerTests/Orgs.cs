@@ -19,7 +19,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         }
 
         [Test()]
-        public static void happyPath()
+        public static void listOrgsHappyPath()
         {
             //Setup strings
             string applicationKey = TestGlobals.applicationKey;

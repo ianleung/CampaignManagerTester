@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using System;
 
 namespace ConsoleApplication1
 {
@@ -14,6 +15,15 @@ namespace ConsoleApplication1
 			this.campaignDescription = CamDesc;
 			this.offerId = OfferId;
 			this.consentText = ConsentTxt;
+            this.fields = new object[4];
+            string name = "email";
+            fields[0] = name;
+            string description = "Email";
+            fields[1] = description;
+            string type = "email";
+            fields[2] = type;
+            bool required = true;
+            fields[3] = required;
 		}
 
 		public string orgId;

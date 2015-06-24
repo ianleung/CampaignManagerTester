@@ -24,22 +24,23 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //Setup strings
             string applicationKey = TestGlobals.applicationKey;
             string sessionKey = TestGlobals.sessionKey;
-            //int;
-            string orgId = TestGlobals.orgId.ToString();
+           	string orgId = TestGlobals.orgIdWithCampSignedUp;
             string timeFilter = TestGlobals.timeFilter;
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;
             //Guid;
             string campaignId = TestGlobals.campaignId;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/RedemptionsDaily?"
-            + "applicationKey=" + applicationKey + "&"
-            + "sessionKey=" + sessionKey + "&"
-            + "orgId=" + orgId + "&"
-            + "timeFilter=" + timeFilter + "&"
-            + "startdate=" + startDate + "&"
-            + "enddate=" + endDate + "&"
-            + "campaignId=" + campaignId, null);
+			string query = "/dwh/RedemptionsDaily?"
+			               + "applicationKey=" + applicationKey + "&"
+			               + "sessionKey=" + sessionKey + "&"
+			               + "orgId=" + orgId + "&"
+			               + "timeFilter=" + timeFilter + "&"
+			               + "startdate=" + startDate + "&"
+			               + "enddate=" + endDate + "&"
+			               + "campaignId=" + campaignId;
+
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));

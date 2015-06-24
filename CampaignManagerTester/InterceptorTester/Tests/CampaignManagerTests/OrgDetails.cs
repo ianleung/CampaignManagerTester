@@ -22,14 +22,16 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void orgDetailsHappyPath()
         {
             //Setup strings
-            string id = TestGlobals.orgId.ToString();
+			string id = TestGlobals.orgIdWithCampSignedUp;
             string applicationKey = TestGlobals.applicationKey;
             string sessionKey = TestGlobals.sessionKey;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Organizations?"
-            + "id=" + id + "&"
-            + "applicationKey=" + applicationKey + "&"
-            + "sessionKey=" + sessionKey, null);
+			string query = "/campaign-manager/Organizations?"
+							+ "id=" + id + "&"
+							+ "applicationKey=" + applicationKey + "&"
+							+ "sessionKey=" + sessionKey;
+
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
@@ -42,15 +44,15 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void orgUpdateHappyPath()
         {
             //Setup strings
-            string id = TestGlobals.orgId.ToString();
+			string id = TestGlobals.orgIdWithCampSignedUp;
             string applicationKey = TestGlobals.applicationKey;
             string sessionKey = TestGlobals.sessionKey;
 
             ConsoleApplication1.OrgUpdateJSON json = new ConsoleApplication1.OrgUpdateJSON();
             json.defaultTermsAndConditions = "Termzan Condit Ions";
-            json.id = "1124";
+			json.id = id;
             json.logoUrl = "http://zombo.com";
-            json.name = "Umbra";
+            json.name = "ABC Grocery";
             json.privacyPolicy = "stuff";
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Organizations/"

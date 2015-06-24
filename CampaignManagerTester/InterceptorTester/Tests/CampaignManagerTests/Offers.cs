@@ -47,10 +47,15 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Console.WriteLine (TestGlobals.offerId);
 
 			string query = "/campaign-manager/Offers/" + TestGlobals.offerId + "?applicationKey=" + TestGlobals.applicationKey
-							+ "&orgId=" + TestGlobals.orgIdWithCampSignedUp
 							+ "&sessionKey=" + TestGlobals.sessionKey;
 
-			OfferJSON json = new OfferJSON ("new offer for QA testing", TestGlobals.orgIdWithCampSignedUp, "456", "blah blah blah");
+			Console.WriteLine (query);
+
+			OfferUpdateJSON json = new OfferUpdateJSON ("description", "new offer for QA testing", TestGlobals.offerId, TestGlobals.orgIdWithCampSignedUp, "456", "blah blah blah", true);
+
+			JObject Json = JObject.FromObject(json);
+
+			Console.WriteLine (Json);
 
 			GenericRequest putOffer = new GenericRequest (TestGlobals.campaignServer, query, json);
 			Test mTest = new Test (putOffer);

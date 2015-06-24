@@ -38,10 +38,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 				
 		}
 
+        //API Needs fixing, can't resolve on our own
 		[Test()]
 		public static void modifyOffer()
 		{
-			//OfferListCreate.createNewOffer ();
+			//OfferListCreate.createNewOffer();
 
 			Console.WriteLine (TestGlobals.offerId);
 
@@ -55,7 +56,9 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Test mTest = new Test (putOffer);
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.PUT, client));
-			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+            string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+            Console.WriteLine(HTTPSCalls.result.Value);
+            Console.WriteLine(HTTPSCalls.result.Key);
 			Assert.AreEqual ("200", statusCode);
 		}
 

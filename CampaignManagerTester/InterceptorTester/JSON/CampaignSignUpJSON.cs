@@ -8,7 +8,14 @@ namespace ConsoleApplication1
 
 		public CampaignSignUpJSON(string Slug)
 		{
-			this.slug = Slug;
+            this.slug = Slug;
+            this.fields = new object[3];
+            string name = "email";
+            fields[0] = name;
+            string description = "Email";
+            fields[1] = description;
+            string type = "email";
+            fields[2] = type;
 		}
 
 		public string slug;

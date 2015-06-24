@@ -24,6 +24,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
+        //Can't work on this, API needs fixing
 		[Test()]
 		public static void newSignUp()
 		{
@@ -32,8 +33,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			GenericRequest postSignUp = new GenericRequest (TestGlobals.campaignServer, query, campaign);
 			Test mtest = new Test (postSignUp);
 			HttpClient client = new HttpClient ();
-			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mtest, HTTPOperation.POST, client));
-			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mtest, HTTPOperation.POST, client));
+            Console.WriteLine(HTTPSCalls.result.Key);
+            Console.WriteLine(HTTPSCalls.result.Value);
+            string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+            Console.WriteLine(statusCode);
 			Assert.AreEqual ("201", statusCode);
 		}
 

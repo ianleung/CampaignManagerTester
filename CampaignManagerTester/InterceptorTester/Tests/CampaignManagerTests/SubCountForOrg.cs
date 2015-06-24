@@ -21,16 +21,17 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         [Test()]
         public static void subCountForOrgHappyPath()
         {
-            //Setup strings
+			//Setup strings
             string applicationKey = TestGlobals.applicationKey;
             string sessionKey = TestGlobals.sessionKey;
-            //int;
-            string orgId = TestGlobals.orgId.ToString();
+            string orgId = TestGlobals.orgIdWithCampSignedUp;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/SubscriptionCount?"
-            + "applicationKey=" + applicationKey + "&"
-            + "sessionKey=" + sessionKey + "&"
-            + "orgId=" + orgId, null);
+			string query = "/dwh/SubscriptionCount?"
+			               + "applicationKey=" + applicationKey + "&"
+			               + "sessionKey=" + sessionKey + "&"
+			               + "orgId=" + orgId;
+
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));

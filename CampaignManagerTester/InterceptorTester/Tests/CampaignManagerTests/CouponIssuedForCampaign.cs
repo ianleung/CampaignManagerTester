@@ -27,11 +27,13 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string slug = TestGlobals.slug;
             string issuedDate = TestGlobals.issuedDate;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/CouponsIssued?"
-            + "applicationKey=" + applicationKey + "&"
-            + "sessionKey=" + sessionKey + "&"
-            + "slug=" + slug + "&"
-            + "issuedDate=" + issuedDate, null);
+			string query = "/dwh/CouponsIssued?"
+			               + "applicationKey=" + applicationKey + "&"
+			               + "sessionKey=" + sessionKey + "&"
+			               + "slug=" + slug + "&"
+			               + "issuedDate=" + issuedDate;
+
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));

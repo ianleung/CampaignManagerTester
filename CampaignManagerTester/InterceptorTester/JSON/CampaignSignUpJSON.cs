@@ -10,12 +10,12 @@ namespace ConsoleApplication1
 		{
             this.slug = Slug;
             this.fields = new object[3];
-            string name = "email";
-            fields[0] = name;
-            string description = "Email";
-            fields[1] = description;
-            string type = "email";
-            fields[2] = type;
+            string email = "myEmail@webnet.org";
+            fields[0] = email;
+            string firstName = "myFirstName";
+            fields[1] = firstName;
+            string lastName = "lastName";
+            fields[2] = lastName;
 		}
 
 		public string slug;
@@ -24,7 +24,7 @@ namespace ConsoleApplication1
 
 		public override string ToString()
 		{
-			return "";
+            return slug + "   " + fields[0].ToString() + "   " + fields[1].ToString() + "   " + fields[2].ToString();
 		}
 	}
 

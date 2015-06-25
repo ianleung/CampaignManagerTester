@@ -24,14 +24,16 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
-        //Can't work on this, API needs fixing
+        //TODO: Check w/ someone to see if the nonsense error messages are logged in JIRA already
 		[Test()]
 		public static void newSignUp()
 		{
 			string query = "/campaign-manager/Signups";
 			CampaignSignUpJSON campaign = new CampaignSignUpJSON(TestGlobals.slug);
 			GenericRequest postSignUp = new GenericRequest (TestGlobals.campaignServer, query, campaign);
-			Test mtest = new Test (postSignUp);
+            Test mtest = new Test(postSignUp);
+            Console.WriteLine(query.ToString());
+            Console.WriteLine(campaign.ToString());
 			HttpClient client = new HttpClient ();
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mtest, HTTPOperation.POST, client));
             Console.WriteLine(HTTPSCalls.result.Key);

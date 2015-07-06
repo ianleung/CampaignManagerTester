@@ -53,7 +53,10 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Test mtest = new Test (deleteSignUp);
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mtest, HTTPOperation.DELETE, client));
-			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+            string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+            Console.WriteLine(statusCode);
+            Console.WriteLine(HTTPSCalls.result.Value.ToString());
+            Console.WriteLine(HTTPSCalls.result.Key.ToString());
             Assert.AreEqual("204", statusCode);
 		}
     }

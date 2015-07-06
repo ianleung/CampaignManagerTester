@@ -30,18 +30,23 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/Redemptions?"
+            string query = "/dwh/Redemptions?"
             + "applicationKey=" + applicationKey + "&"
             + "sessionKey=" + sessionKey + "&"
             + "orgId=" + orgId + "&"
             + "timeFilter=" + timeFilter + "&"
             + "startdate=" + startDate + "&"
-            + "enddate=" + endDate, null);
+            + "enddate=" + endDate;
+
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);
+
+            Console.WriteLine(query.ToString());
 
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
+            Console.WriteLine(HTTPSCalls.result.Value);
             Assert.AreEqual("200", statusCode);
         }
     }

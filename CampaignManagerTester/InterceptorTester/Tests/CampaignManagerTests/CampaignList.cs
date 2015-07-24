@@ -59,7 +59,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 
 		[Test()]
-		public static void getCampaign()
+		public static void getSignupCampaigns()
 		{
 			string applicationKey = TestGlobals.applicationKey;
 			string sessionKey = TestGlobals.sessionKey;

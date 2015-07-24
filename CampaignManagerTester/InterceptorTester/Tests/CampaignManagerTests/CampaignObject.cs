@@ -20,7 +20,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         }
 
         [Test()]
-        public static void getHappyPath()
+        public static void getCampaign()
         {
             //Setup strings
             string applicationKey = TestGlobals.applicationKey;
@@ -42,7 +42,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
         //TODO: Do this when API is legible
         [Test()]
-        public static void updateHappyPath()
+        public static void updateCampaign()
         {
             //Setup strings
             
@@ -77,7 +77,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 
         [Test()]
-        public static void removeHappyPath()
+        public static void removeCampaign()
         {
             //Setup strings
             

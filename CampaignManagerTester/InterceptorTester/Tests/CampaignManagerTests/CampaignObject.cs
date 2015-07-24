@@ -71,7 +71,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Console.WriteLine("Status Code: " + statusCode);
             Assert.AreEqual("200", statusCode);
 
-			removeHappyPath ();
+			removeCampaign ();
         }
 
 

@@ -50,30 +50,32 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
 			Console.WriteLine("Status Code: " + statusCode);
+			Console.WriteLine ("Server: " + TestGlobals.campaignServer);
 			Console.WriteLine (HTTPSCalls.result.Value.Substring(7, 36));
 			TestGlobals.campaignId = HTTPSCalls.result.Value.Substring (7, 36);
 			Assert.AreEqual ("200", statusCode);
 		}
 
 
-		/*
+
 		[Test()]
-		public static void getCampaigns()
+		public static void getCampaign()
 		{
-			string query = "campaign-manager/Campaigns?applicationKey=" + TestGlobals.applicationKey + "&sessionId=" + TestGlobals.sessionId + 
-							"&orgId=" + TestGlobals.orgId.ToString();
-			GenericRequest getCam = new GenericRequest (TestGlobals.campaignServer, query, null);
-			Test mTest = new Test (getCam);
-			HttpClient client = new HttpClient ();
-			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
-			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
-            Console.WriteLine("Status Code: " + statusCode);
-			Assert.AreEqual ("200", statusCode);
+			string applicationKey = TestGlobals.applicationKey;
+			string sessionKey = TestGlobals.sessionKey;
+
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns?"
+				+ "applicationKey=" + TestGlobals.applicationKey + "&"
+				+ "sessionKey=" + TestGlobals.sessionKey + "&"
+				+ "orgId=" + TestGlobals.orgIdWithCampSignedUp, null);
+
+			Test mTest = new Test(request);
+			AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
+			string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+			Console.WriteLine("Status Code: " + statusCode);
+			Assert.AreEqual("200", statusCode);
 
 		}
-		*/
-
-
 
     }
 }

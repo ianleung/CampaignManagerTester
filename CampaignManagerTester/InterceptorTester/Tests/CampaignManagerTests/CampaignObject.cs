@@ -26,16 +26,19 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string applicationKey = TestGlobals.applicationKey;
 			string sessionKey = TestGlobals.sessionKey;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns/?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/campaigns/"
+			+ TestGlobals.campaignId + "?"
             + "applicationKey=" + TestGlobals.applicationKey + "&"
             + "sessionKey=" + TestGlobals.sessionKey, null);
 
+			Console.WriteLine ("campaignId: " + TestGlobals.campaignId);
             Test mTest = new Test(request);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
             Assert.AreEqual("200", statusCode);
         }
+
 
         //TODO: Do this when API is legible
         [Test()]
@@ -70,6 +73,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 			removeHappyPath ();
         }
+
+
 
         [Test()]
         public static void removeHappyPath()

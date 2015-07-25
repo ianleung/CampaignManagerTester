@@ -23,10 +23,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void getCampaign()
         {
             //Setup strings
-            string applicationKey = TestGlobals.applicationKey;
-			string sessionKey = TestGlobals.sessionKey;
-
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/campaigns/"
+            GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/campaigns/"
 			+ TestGlobals.campaignId + "?"
             + "applicationKey=" + TestGlobals.applicationKey + "&"
             + "sessionKey=" + TestGlobals.sessionKey, null);

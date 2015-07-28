@@ -60,6 +60,7 @@ namespace InterceptorTester.Tests.AdminTests
             }
             if (sessionToken.GetValue("sessionToken") == null)
             {
+                Console.WriteLine("Missing session token. Generating...");
                 generateSessionToken();
             }
             string parse = "Token " + sessionToken.GetValue("sessionToken").ToString();

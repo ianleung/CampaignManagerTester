@@ -53,12 +53,13 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void getSignUpFormList()
 		{
-			string query = "/campaign-manager/SignupForms?orgId=" +TestGlobals.orgIdWithCampSignedUp;
+			string query = "/campaign-manager/SignupForms?orgId=" +TestGlobals.orgIdCreated;
 			GenericRequest getList = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (getList);
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+            Console.WriteLine(HTTPSCalls.result.Value);
 			Assert.AreEqual("200", statusCode);
 
 		}
@@ -66,8 +67,14 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void createSignUpForms()
 		{
-			string query = "/campaign-manager/SignupForms?orgId=" + TestGlobals.orgIdWithCampSignedUp;
-			CampaignManagerFormJSON campaign = postSignUpForm (TestGlobals.orgIdWithCampSignedUp);
+            if (TestGlobals.orgIdCreated == null)
+            {
+                OrganizationTest.createOrganization();
+                System.Threading.Thread.Sleep(5000);
+            }
+
+			string query = "/campaign-manager/SignupForms?orgId=" + TestGlobals.orgIdCreated;
+            CampaignManagerFormJSON campaign = postSignUpForm(TestGlobals.orgIdCreated);
 			GenericRequest postForm = new GenericRequest (TestGlobals.campaignServer, query, campaign);
 
             Console.WriteLine(postForm.getJson().ToString());
@@ -85,12 +92,13 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void displaySignUpForm()
 		{
-			string query = "/campaign-manager/SignupForms/" + "ABC";
+			string query = "/campaign-manager/SignupForms/" + TestGlobals.slug;
 			GenericRequest displayForm = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (displayForm);
 			HttpClient client = new HttpClient ();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+            Console.WriteLine(HTTPSCalls.result.Value);
 			Assert.AreEqual ("200", statusCode);
 		}
 

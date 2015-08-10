@@ -27,11 +27,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void getSpecialOffer()
 		{
-			string query = "/campaign-manager/Offers/" + TestGlobals.offerId + "?applicationKey=" + TestGlobals.applicationKey
-							+ "&sessionKey=" + TestGlobals.sessionKey + "&orgId=" + TestGlobals.orgIdWithCampSignedUp;
+			string query = "/campaign-manager/Offers/" + TestGlobals.offerId + "?&orgId=" + TestGlobals.orgIdWithCampSignedUp;
 			GenericRequest getOffer = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (getOffer);
 			HttpClient client = new HttpClient ();
+			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
 			Assert.AreEqual ("200", statusCode);
@@ -46,8 +46,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 			Console.WriteLine (TestGlobals.offerId);
 
-			string query = "/campaign-manager/Offers/" + TestGlobals.offerId + "?applicationKey=" + TestGlobals.applicationKey
-							+ "&sessionKey=" + TestGlobals.sessionKey;
+			string query = "/campaign-manager/Offers/" + TestGlobals.offerId;
 
 			Console.WriteLine (query);
 
@@ -60,6 +59,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			GenericRequest putOffer = new GenericRequest (TestGlobals.campaignServer, query, json);
 			Test mTest = new Test (putOffer);
 			HttpClient client = new HttpClient ();
+			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.PUT, client));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine(HTTPSCalls.result.Value);
@@ -70,11 +70,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void removeOffer()
 		{
-			string query = "/campaign-manager/Offers/" + TestGlobals.offerId + "?applicationKey=" + TestGlobals.applicationKey
-							+ "&sessionKey=" + TestGlobals.sessionKey;
+			string query = "/campaign-manager/Offers/" + TestGlobals.offerId;
 			GenericRequest deleteOffer = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (deleteOffer);
 			HttpClient client = new HttpClient ();
+			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.DELETE, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
 			Assert.AreEqual ("204", statusCode);

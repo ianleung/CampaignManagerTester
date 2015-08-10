@@ -40,6 +40,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Console.WriteLine(query.ToString());
             Console.WriteLine(campaign.ToString());
 			HttpClient client = new HttpClient ();
+			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mtest, HTTPOperation.POST, client));
             Console.WriteLine(HTTPSCalls.result.Key);
             Console.WriteLine(HTTPSCalls.result.Value);
@@ -57,6 +58,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			GenericRequest deleteSignUp = new GenericRequest (TestGlobals.campaignServer, query, signUp);
 			Test mtest = new Test (deleteSignUp);
 			HttpClient client = new HttpClient ();
+			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mtest, HTTPOperation.DELETE, client));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine(statusCode);

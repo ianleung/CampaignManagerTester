@@ -24,8 +24,6 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void couponRedeemedHappyPath()
         {
             //Setup strings
-            string applicationKey = TestGlobals.applicationKey;
-            string sessionKey = TestGlobals.sessionKey;
             string slug = TestGlobals.slug;
             string redeemedDate = TestGlobals.redeemedDate;
 

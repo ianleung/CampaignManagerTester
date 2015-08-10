@@ -1,11 +1,17 @@
-﻿using ConsoleApplication1;
-using NUnit.Framework;
-using Nito.AsyncEx;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
+using System.IO;
+using System.Configuration;
+using Nito.AsyncEx;
+using System.IO.Compression;
+using Newtonsoft.Json.Linq;
+using System.Net.Http;
+using ConsoleApplication1;
+using InterceptorTester.Tests.AdminTests;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
@@ -22,8 +28,6 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void offerPreviewHappyPath()
         {
             //Setup strings
-            string applicationKey = TestGlobals.applicationKey;
-            string sessionKey = TestGlobals.sessionKey;
             //Guid;
             string id = TestGlobals.offerId;
             //string
@@ -32,9 +36,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Offers/"+id+"/Preview/?applicationKey="+applicationKey+"&sessionKey="+sessionKey+"&campaignName="+campaignName+"&campaignDescription="+campaignDescription+"&startDate="+startDate+"&endDate="+endDate, null);
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Offers/"+id+"/Preview/?campaignName="+campaignName+"&campaignDescription="+campaignDescription+"&startDate="+startDate+"&endDate="+endDate, null);
 
             Test mTest = new Test(request);
+			HttpClient client = new HttpClient ();
+			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);

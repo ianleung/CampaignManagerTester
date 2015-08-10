@@ -24,8 +24,6 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void couponIssuedHappyPath()
         {
             //Setup strings
-            string applicationKey = TestGlobals.applicationKey;
-            string sessionKey = TestGlobals.sessionKey;
             string slug = TestGlobals.slug;
             string issuedDate = TestGlobals.issuedDate;
 

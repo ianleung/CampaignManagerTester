@@ -23,9 +23,6 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         [Test()]
         public static void campaignRedemptionHappyPath()
         {
-            //Setup strings
-            string applicationKey = TestGlobals.applicationKey;
-            string sessionKey = TestGlobals.sessionKey;
             //int;
             string orgId = TestGlobals.orgId.ToString();
             string timeFilter = TestGlobals.timeFilter;

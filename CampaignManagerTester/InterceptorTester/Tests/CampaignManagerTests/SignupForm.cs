@@ -57,6 +57,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			GenericRequest getList = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (getList);
 			HttpClient client = new HttpClient ();
+			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine(HTTPSCalls.result.Value);
@@ -81,6 +82,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 			Test mTest = new Test (postForm);
 			HttpClient client = new HttpClient ();
+			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
             Console.WriteLine(statusCode);
@@ -96,6 +98,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			GenericRequest displayForm = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (displayForm);
 			HttpClient client = new HttpClient ();
+			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
             Console.WriteLine(HTTPSCalls.result.Value);

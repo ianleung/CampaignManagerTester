@@ -1,4 +1,5 @@
 ﻿using ConsoleApplication1;
+using InterceptorTester.Tests.AdminTests;
 using NUnit.Framework;
 using Nito.AsyncEx;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
@@ -24,13 +26,13 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         {
             //Setup strings
             GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/campaigns/"
-			+ TestGlobals.campaignId + "?"
-            + "applicationKey=" + TestGlobals.applicationKey + "&"
-            + "sessionKey=" + TestGlobals.sessionKey, null);
+			+ TestGlobals.campaignId, null);
 
 			Console.WriteLine ("campaignId: " + TestGlobals.campaignId);
             Test mTest = new Test(request);
-            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
+            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET, client));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
             Assert.AreEqual("200", statusCode);
@@ -58,12 +60,12 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Console.WriteLine (TestGlobals.campaignId);
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns/" + TestGlobals.campaignId + "?"
-            						+ "applicationKey=" + TestGlobals.applicationKey + "&"
-									+ "orgId=" + TestGlobals.orgIdWithCampSignedUp + "&"
-									+ "sessionKey=" + TestGlobals.sessionKey, camp);
+									+ "orgId=" + TestGlobals.orgIdWithCampSignedUp, camp);
 
             Test mTest = new Test(request);
-            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.PUT));
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
+            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.PUT,client));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
             Assert.AreEqual("200", statusCode);
@@ -82,12 +84,12 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Console.WriteLine (TestGlobals.campaignId);
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns/" + TestGlobals.campaignId+ "?"
-            + "applicationKey=" + TestGlobals.applicationKey + "&"
-			+ "orgId=" + TestGlobals.orgIdWithCampSignedUp + "&"
-            + "sessionKey=" + TestGlobals.sessionKey, null);
+			+ "orgId=" + TestGlobals.orgIdWithCampSignedUp, null);
 
             Test mTest = new Test(request);
-            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.DELETE));
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
+            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.DELETE,client));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
             Assert.AreEqual("204", statusCode);

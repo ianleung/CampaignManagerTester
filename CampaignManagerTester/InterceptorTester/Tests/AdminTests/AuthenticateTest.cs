@@ -37,6 +37,7 @@ namespace InterceptorTester.Tests.AdminTests
             Test authTest = new Test(authCall);
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(authTest, HTTPOperation.POST));
 			sessionToken = JObject.Parse(HTTPSCalls.result.Value);
+            Console.WriteLine(sessionToken.ToString());
         }
 
         //[Test()]

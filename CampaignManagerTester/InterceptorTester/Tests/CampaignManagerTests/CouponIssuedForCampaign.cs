@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
+using InterceptorTester.Tests.AdminTests;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
@@ -28,15 +30,15 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string issuedDate = TestGlobals.issuedDate;
 
 			string query = "/dwh/CouponsIssued?"
-			               + "applicationKey=" + applicationKey + "&"
-			               + "sessionKey=" + sessionKey + "&"
 			               + "slug=" + slug + "&"
 			               + "issuedDate=" + issuedDate;
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);
 
             Test mTest = new Test(request);
-            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
+            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET,client));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
             Assert.AreEqual("200", statusCode);

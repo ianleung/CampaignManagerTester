@@ -1,9 +1,11 @@
 ﻿using ConsoleApplication1;
+using InterceptorTester.Tests.AdminTests;
 using NUnit.Framework;
 using Nito.AsyncEx;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,8 +33,6 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string endDate = TestGlobals.endDate;
 
             string query = "/dwh/Redemptions?"
-            + "applicationKey=" + applicationKey + "&"
-            + "sessionKey=" + sessionKey + "&"
             + "orgId=" + orgId + "&"
             + "timeFilter=" + timeFilter + "&"
             + "startdate=" + startDate + "&"
@@ -43,7 +43,9 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Console.WriteLine(query.ToString());
 
             Test mTest = new Test(request);
-            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
+            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET, client));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
             Console.WriteLine(HTTPSCalls.result.Value);

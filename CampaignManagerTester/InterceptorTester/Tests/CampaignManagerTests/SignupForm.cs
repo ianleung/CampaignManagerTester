@@ -59,7 +59,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			HttpClient client = new HttpClient ();
 			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
-			string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+            string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+            Console.WriteLine(HTTPSCalls.result.Key.ToString());
             Console.WriteLine(HTTPSCalls.result.Value);
 			Assert.AreEqual("200", statusCode);
 
@@ -87,7 +88,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
             Console.WriteLine(statusCode);
-            Console.WriteLine(HTTPSCalls.result.Key);
+            Console.WriteLine(HTTPSCalls.result.Key.ToString());
             Console.WriteLine(HTTPSCalls.result.Value);
 			Assert.AreEqual ("201", statusCode);
 		}
@@ -101,7 +102,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			HttpClient client = new HttpClient ();
 			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
-			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+            string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
+            Console.WriteLine(HTTPSCalls.result.Key.ToString());
             Console.WriteLine(HTTPSCalls.result.Value);
 			Assert.AreEqual ("200", statusCode);
 		}

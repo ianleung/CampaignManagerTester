@@ -90,6 +90,10 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Console.WriteLine(statusCode);
             Console.WriteLine(HTTPSCalls.result.Key.ToString());
             Console.WriteLine(HTTPSCalls.result.Value);
+			if (statusCode == "201") 
+			{
+				TestGlobals.orgIdWithCampSignedUp = TestGlobals.orgIdCreated;
+			}
 			Assert.AreEqual ("201", statusCode);
 		}
 

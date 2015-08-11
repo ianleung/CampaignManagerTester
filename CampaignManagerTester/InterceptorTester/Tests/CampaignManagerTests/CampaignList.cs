@@ -40,8 +40,10 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void createCampaign()
 		{
-			string query = "campaign-manager/Campaign/?orgId=" + TestGlobals.orgIdWithCampSignedUp;
 
+			//SignupForm.createSignUpForms ();
+			string query = "campaign-manager/Campaign/?orgId=" + TestGlobals.orgIdWithCampSignedUp;
+			Console.WriteLine (query);
 			CampaignJSON camp = newCampaign ();
 			GenericRequest postCamp = new GenericRequest (TestGlobals.campaignServer, query, camp);
 			Test mTest = new Test (postCamp);

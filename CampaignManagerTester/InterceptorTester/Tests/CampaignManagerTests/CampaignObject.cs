@@ -35,6 +35,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET, client));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
+            Console.WriteLine(HTTPSCalls.result.Key.ToString());
+            Console.WriteLine(HTTPSCalls.result.Value);
             Assert.AreEqual("200", statusCode);
         }
 
@@ -54,7 +56,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			jsonList [1] = new CampaignSegmentsJSON ("B", null);
 			jsonList [2] = new CampaignSegmentsJSON ("C", null);
 
-			CampaignJSON camp = new CampaignJSON (TestGlobals.campaignId, "QA testing update", "This is an update for QA testing", TestGlobals.orgIdWithCampSignedUp, "2015-06-23 14:00", "2015-06-24 14:00");
+			CampaignJSON camp = new CampaignJSON ("QA testing update", "This is an update for QA testing", TestGlobals.orgIdWithCampSignedUp, "2015-06-23 14:00", "2015-06-24 14:00");
 			camp.segments = jsonList;
 
 			Console.WriteLine (TestGlobals.campaignId);
@@ -68,6 +70,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.PUT,client));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
+            Console.WriteLine(HTTPSCalls.result.Key.ToString());
+            Console.WriteLine(HTTPSCalls.result.Value);
             Assert.AreEqual("200", statusCode);
 
 			removeCampaign ();
@@ -92,6 +96,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.DELETE,client));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
+            Console.WriteLine(HTTPSCalls.result.Key.ToString());
+            Console.WriteLine(HTTPSCalls.result.Value);
             Assert.AreEqual("204", statusCode);
         }
     }

@@ -10,6 +10,7 @@ using Nito.AsyncEx;
 using System.IO.Compression;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
+using InterceptorTester.Tests.AdminTests;
 
 namespace ConsoleApplication1
 {
@@ -92,7 +93,8 @@ namespace ConsoleApplication1
 				applicationKey = ConfigurationManager.ConnectionStrings["applicationKey"].ConnectionString;
 				sessionKey = ConfigurationManager.ConnectionStrings["sessionKey"].ConnectionString;
 
-				orgIdWithCampSignedUp = "2238";
+				orgIdWithCampSignedUp = orgIdCreated;
+                OrganizationTest.createOrganization();
 
 				string testRunsString = ConfigurationManager.ConnectionStrings["TimesToRunTests"].ConnectionString;
 				try { maxReps = int.Parse(testRunsString); }

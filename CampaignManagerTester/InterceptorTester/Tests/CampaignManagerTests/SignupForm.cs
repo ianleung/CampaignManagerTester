@@ -65,6 +65,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 		}
 
+        //This creates a signup campaign
 		[Test()]
 		public static void createSignUpForms()
 		{

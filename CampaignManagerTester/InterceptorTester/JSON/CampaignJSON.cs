@@ -6,9 +6,8 @@ namespace ConsoleApplication1
 	public class CampaignJSON
 	{
 
-		public CampaignJSON(string ID, string Name, string desc, string OrgID, string sDate, string eDate)
+		public CampaignJSON(string Name, string desc, string OrgID, string sDate, string eDate)
 		{
-			id = ID;
 			name = Name;
 			description = desc;
 			orgId = OrgID;
@@ -16,7 +15,6 @@ namespace ConsoleApplication1
 			endDate = eDate;
 		}
 
-		public string id;
 		public string name;
 		public string description;
 		public string orgId;
@@ -27,7 +25,7 @@ namespace ConsoleApplication1
 
 		public override string ToString()
 		{
-			return "";
+			return "name: " + name + "\ndescription: " + description + "\norgId: " + orgId + "\nendDate: " + endDate + "\nsegments: " + segments.ToString();
 		}
 	}
 

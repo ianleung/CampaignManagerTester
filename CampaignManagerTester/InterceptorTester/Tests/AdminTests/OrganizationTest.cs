@@ -24,7 +24,6 @@ namespace InterceptorTester.Tests.AdminTests
         public void setup()
         {
             TestGlobals.setup();
-
         }
 
         //[Test()]

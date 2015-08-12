@@ -97,7 +97,9 @@ namespace ConsoleApplication1
                 if (orgIdCreated == null)
                 {
                     OrganizationTest.createOrganization();
+					orgIdWithCampSignedUp = orgIdCreated;
                 }
+				Console.WriteLine(orgIdWithCampSignedUp);
 				string testRunsString = ConfigurationManager.ConnectionStrings["TimesToRunTests"].ConnectionString;
 				try { maxReps = int.Parse(testRunsString); }
 				catch (Exception e)

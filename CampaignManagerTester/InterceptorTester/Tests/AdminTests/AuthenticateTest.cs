@@ -68,7 +68,7 @@ namespace InterceptorTester.Tests.AdminTests
             }
             string parse = "Token " + sessionToken.GetValue("sessionToken").ToString();
             Console.WriteLine(parse);
-            AuthenticationHeaderValue ret = System.Net.Http.Headers.AuthenticationHeaderValue.Parse(parse);
+            AuthenticationHeaderValue ret = AuthenticationHeaderValue.Parse(parse);
             return ret;
         }
 

@@ -42,7 +42,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		{
 
 			//SignupForm.createSignUpForms ();
-			string query = "campaign-manager/Campaign/?orgId=" + TestGlobals.orgIdWithCampSignedUp;
+			string query = "/campaign-manager/Campaign?orgId=" + TestGlobals.orgIdWithCampSignedUp;
 			Console.WriteLine (query);
 			CampaignJSON camp = newCampaign ();
 			GenericRequest postCamp = new GenericRequest (TestGlobals.campaignServer, query, camp);
@@ -69,11 +69,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 		[Test()]
 		public static void getRfmCampaigns()
-		{
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaign?"
-				+ "orgId=" + TestGlobals.orgIdWithCampSignedUp, null);
-
-            Test mTest = new Test(request);
+		{	
+			string query = "/campaign-manager/Campaign?orgId=" + TestGlobals.orgIdWithCampSignedUp;
+			Console.WriteLine (query);
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);
+			Test mTest = new Test(request);
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 			AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET,client));

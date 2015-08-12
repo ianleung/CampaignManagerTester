@@ -20,7 +20,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             TestGlobals.setup();
         }
 
-        [Test()]
+        //[Test()]
         public static void campaignRedemptionHappyPath()
         {
             //int;

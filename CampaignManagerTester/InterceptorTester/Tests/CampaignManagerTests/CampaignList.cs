@@ -37,7 +37,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			return camp;
 		}
 
-		[Test()]
+		//[Test()]
 		public static void createCampaign()
 		{
 

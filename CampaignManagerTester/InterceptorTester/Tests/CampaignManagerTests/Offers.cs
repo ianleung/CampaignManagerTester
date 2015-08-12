@@ -24,7 +24,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
-		[Test()]
+		//[Test()]
 		public static void getSpecialOffer()
 		{
 			string query = "/campaign-manager/Offers/" + TestGlobals.offerId + "?&orgId=" + TestGlobals.orgIdWithCampSignedUp;
@@ -39,7 +39,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		}
 
         //API Needs fixing, can't resolve on our own
-		[Test()]
+		//[Test()]
 		public static void modifyOffer()
 		{
 			//OfferListCreate.createNewOffer();
@@ -67,7 +67,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Assert.AreEqual ("200", statusCode);
 		}
 
-		[Test()]
+		//[Test()]
 		public static void removeOffer()
 		{
 			string query = "/campaign-manager/Offers/" + TestGlobals.offerId;

@@ -25,7 +25,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
-		[Test()]
+		//[Test()]
 		public static void getOffers()
 		{
 			string query = "campaign-manager/Offers/?orgId=" + TestGlobals.orgIdWithCampSignedUp;
@@ -39,7 +39,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Assert.AreEqual("200", statusCode);
 		}
 
-		[Test()]
+		//[Test()]
 		public static void createNewOffer()
 		{
 			string query = "campaign-manager/Offers/?orgId=" + TestGlobals.orgIdWithCampSignedUp;

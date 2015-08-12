@@ -50,7 +50,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		}
 
 
-		[Test()]
+		//[Test()]
 		public static void getSignUpFormList()
 		{
 			string query = "/campaign-manager/SignupForms?orgId=" +TestGlobals.orgIdCreated;
@@ -67,7 +67,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		}
 
         //This creates a signup campaign
-		[Test()]
+		//[Test()]
 		public static void createSignUpForms()
 		{
             if (TestGlobals.orgIdCreated == null)
@@ -97,7 +97,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Assert.AreEqual ("201", statusCode);
 		}
 
-		[Test()]
+		//[Test()]
 		public static void displaySignUpForm()
 		{
 			string query = "/campaign-manager/SignupForms/" + TestGlobals.slug;

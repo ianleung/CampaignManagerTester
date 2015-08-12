@@ -24,7 +24,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             TestGlobals.setup();
         }
 
-        [Test()]
+        //[Test()]
         public static void getOrgSlugsHappyPath()
         {
             //Setup strings

@@ -94,8 +94,10 @@ namespace ConsoleApplication1
 				sessionKey = ConfigurationManager.ConnectionStrings["sessionKey"].ConnectionString;
 
 				orgIdWithCampSignedUp = orgIdCreated;
-                OrganizationTest.createOrganization();
-
+                if (orgIdCreated == null)
+                {
+                    OrganizationTest.createOrganization();
+                }
 				string testRunsString = ConfigurationManager.ConnectionStrings["TimesToRunTests"].ConnectionString;
 				try { maxReps = int.Parse(testRunsString); }
 				catch (Exception e)

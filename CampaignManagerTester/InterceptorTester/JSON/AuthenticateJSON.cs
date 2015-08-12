@@ -26,7 +26,7 @@ namespace ConsoleApplication1
 
 		public override string ToString()
 		{
-			return "";
+			return "userID: " + userID + "\npassword: " + password;
 		}
 	}
 		

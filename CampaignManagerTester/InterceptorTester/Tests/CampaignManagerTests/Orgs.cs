@@ -24,7 +24,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             TestGlobals.setup();
         }
 
-        //[Test()]
+        [Test()]
         public static void listOrgsHappyPath()
         {
             GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Organizations", null);

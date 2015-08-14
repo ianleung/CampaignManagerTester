@@ -84,7 +84,7 @@ namespace ConsoleApplication1
                 timeFilter = ConfigurationManager.ConnectionStrings["timeFilter"].ConnectionString;
                 status = ConfigurationManager.ConnectionStrings["status"].ConnectionString;
                 publicationId = ConfigurationManager.ConnectionStrings["publicationId"].ConnectionString;
-                //offerId = ConfigurationManager.ConnectionStrings["offerId"].ConnectionString;
+                offerId = ConfigurationManager.ConnectionStrings["offerId"].ConnectionString;
                 campaignName = ConfigurationManager.ConnectionStrings["campaignName"].ConnectionString;
                 campaignDescription = ConfigurationManager.ConnectionStrings["campaignDescription"].ConnectionString;
                 couponCode = ConfigurationManager.ConnectionStrings["couponCode"].ConnectionString;
@@ -93,7 +93,7 @@ namespace ConsoleApplication1
 				applicationKey = ConfigurationManager.ConnectionStrings["applicationKey"].ConnectionString;
 				sessionKey = ConfigurationManager.ConnectionStrings["sessionKey"].ConnectionString;
 
-                orgIdCreated = "454";
+                orgIdCreated = "451";
 				orgIdWithCampSignedUp = orgIdCreated;
                 if (orgIdCreated == null)
                 {

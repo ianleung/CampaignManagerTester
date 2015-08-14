@@ -26,13 +26,13 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 		public static CampaignManagerFormJSON postSignUpForm(string orgId)
 		{
-			OfferListCreate.createNewOffer ();
+			OfferListCreate.createNewOffer();
 
 			CampaignManagerFormFieldsJSON[] jsonList = new CampaignManagerFormFieldsJSON[3];
 			jsonList [0] = new CampaignManagerFormFieldsJSON ("email", true);
 			jsonList [1] = new CampaignManagerFormFieldsJSON ("firstname", true);
 			jsonList [2] = new CampaignManagerFormFieldsJSON ("lastname", true);
-			CampaignManagerFormJSON camMan = new CampaignManagerFormJSON (orgId, "ABC", "ABC Sign Up Campaign", "All the ABC deals", TestGlobals.offerId, "Yes I agree to sign up");
+			CampaignManagerFormJSON camMan = new CampaignManagerFormJSON (orgId, "ABC"+orgId, "ABC Sign Up Campaign for "+orgId, "All the ABC deals", TestGlobals.offerId, "Yes I agree to sign up");
 			camMan.fields = jsonList;
 			return camMan;
 		}
@@ -50,7 +50,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		}
 
 
-		//[Test()]
+		[Test()]
 		public static void getSignUpFormList()
 		{
 			string query = "/campaign-manager/SignupForms?orgId=" +TestGlobals.orgIdCreated;
@@ -67,7 +67,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		}
 
         //This creates a signup campaign
-		//[Test()]
+		[Test()]
 		public static void createSignUpForms()
 		{
             if (TestGlobals.orgIdCreated == null)
@@ -79,12 +79,12 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			string query = "/campaign-manager/SignupForms?orgId=" + TestGlobals.orgIdCreated;
             CampaignManagerFormJSON campaign = postSignUpForm(TestGlobals.orgIdCreated);
 			GenericRequest postForm = new GenericRequest (TestGlobals.campaignServer, query, campaign);
-
-            Console.WriteLine(postForm.getJson().ToString());
-
 			Test mTest = new Test (postForm);
 			HttpClient client = new HttpClient ();
-			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
+            client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
+
+            //Console.WriteLine(postForm.getJson().ToString());
+
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
             Console.WriteLine(statusCode);
@@ -97,7 +97,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Assert.AreEqual ("201", statusCode);
 		}
 
-		//[Test()]
+		[Test()]
 		public static void displaySignUpForm()
 		{
 			string query = "/campaign-manager/SignupForms/" + TestGlobals.slug;

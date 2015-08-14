@@ -77,7 +77,7 @@ namespace ConsoleApplication1
                 username = ConfigurationManager.ConnectionStrings["Username"].ConnectionString;
                 password = ConfigurationManager.ConnectionStrings["Password"].ConnectionString;
 
-                slug = ConfigurationManager.ConnectionStrings["slug"].ConnectionString;
+				slug = "ABC1";
                 startDate = ConfigurationManager.ConnectionStrings["startDate"].ConnectionString;
                 endDate = ConfigurationManager.ConnectionStrings["endDate"].ConnectionString;
                 redeemedDate = ConfigurationManager.ConnectionStrings["redeemedDate"].ConnectionString;

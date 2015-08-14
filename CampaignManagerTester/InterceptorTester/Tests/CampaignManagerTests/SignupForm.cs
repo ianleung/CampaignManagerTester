@@ -74,14 +74,16 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void createSignUpForms()
 		{
-            if (TestGlobals.orgIdCreated == null)
+            /*
+			if (TestGlobals.orgIdCreated == null)
             {
                 OrganizationTest.createOrganization();
                 System.Threading.Thread.Sleep(5000);
             }
+            */
 
 			string query = "/campaign-manager/SignupForms?orgId=" + TestGlobals.orgIdCreated;
-            CampaignManagerFormJSON campaign = postSignUpForm(TestGlobals.orgIdCreated);
+			CampaignManagerFormJSON campaign = postSignUpForm(TestGlobals.orgIdCreated);
 			GenericRequest postForm = new GenericRequest (TestGlobals.campaignServer, query, campaign);
 			Test mTest = new Test (postForm);
 			HttpClient client = new HttpClient ();

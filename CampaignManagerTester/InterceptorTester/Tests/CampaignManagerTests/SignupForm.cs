@@ -29,10 +29,10 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			OfferListCreate.createNewOffer ();
 
 			CampaignManagerFormFieldsJSON[] jsonList = new CampaignManagerFormFieldsJSON[3];
-			jsonList [0] = new CampaignManagerFormFieldsJSON ("Email", true);
+			jsonList [0] = new CampaignManagerFormFieldsJSON ("email", true);
 			jsonList [1] = new CampaignManagerFormFieldsJSON ("firstname", true);
 			jsonList [2] = new CampaignManagerFormFieldsJSON ("lastname", true);
-			CampaignManagerFormJSON camMan = new CampaignManagerFormJSON (orgId, "ABC", "ABC Sign Up Campaign", "All the ABC deals", TestGlobals.offerId, "Yes I agree to sign up");
+			CampaignManagerFormJSON camMan = new CampaignManagerFormJSON (orgId, "ABC1", "ABC1 Sign Up Campaign", "All the ABC deals", TestGlobals.offerId, "Yes I agree to sign up");
 			camMan.fields = jsonList;
 			return camMan;
 		}
@@ -68,7 +68,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
         // This creates a signup campaign
 		// Organization need to be manually added to database after being created
-		//[Test()]
+		[Test()]
 		public static void createSignUpForms()
 		{
            	

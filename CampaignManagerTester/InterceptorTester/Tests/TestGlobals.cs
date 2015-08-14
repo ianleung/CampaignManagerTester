@@ -93,11 +93,7 @@ namespace ConsoleApplication1
 				applicationKey = ConfigurationManager.ConnectionStrings["applicationKey"].ConnectionString;
 				sessionKey = ConfigurationManager.ConnectionStrings["sessionKey"].ConnectionString;
 
-<<<<<<< HEAD
-                orgIdCreated = "460";
-=======
-                orgIdCreated = "451";
->>>>>>> origin/master
+				orgIdCreated = "460";
 				orgIdWithCampSignedUp = orgIdCreated;
                 if (orgIdCreated == null)
                 {

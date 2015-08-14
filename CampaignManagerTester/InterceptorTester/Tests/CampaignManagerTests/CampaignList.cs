@@ -28,7 +28,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		public static CampaignJSON newCampaign()
 		{
 			CampaignSegmentsJSON[] jsonList = new CampaignSegmentsJSON[3];
-			jsonList [0] = new CampaignSegmentsJSON ("A", "e8141292-7f20-467a-b905-20261c5a8306");
+			jsonList [0] = new CampaignSegmentsJSON ("A", null);
 			jsonList [1] = new CampaignSegmentsJSON ("B", null);
 			jsonList [2] = new CampaignSegmentsJSON ("C", null);
 
@@ -37,12 +37,12 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			return camp;
 		}
 
-		//[Test()]
+		[Test()]
 		public static void createCampaign()
 		{
 
 			//SignupForm.createSignUpForms ();
-			string query = "/campaign-manager/Campaign?orgId=" + TestGlobals.orgIdWithCampSignedUp;
+			string query = "/campaign-manager/Campaigns?orgId=" + TestGlobals.orgIdWithCampSignedUp;
 			Console.WriteLine (query);
 			CampaignJSON camp = newCampaign ();
 			GenericRequest postCamp = new GenericRequest (TestGlobals.campaignServer, query, camp);
@@ -63,6 +63,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Assert.AreEqual ("200", statusCode);
             //??? Campaign id is an input parameter
             TestGlobals.campaignId = HTTPSCalls.result.Value.Substring(7, 36);
+			Console.WriteLine (TestGlobals.campaignId);
 		}
 
 
@@ -70,7 +71,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void getRfmCampaigns()
 		{	
-			string query = "/campaign-manager/Campaign?orgId=" + TestGlobals.orgIdWithCampSignedUp;
+			string query = "/campaign-manager/Campaigns?orgId=" + TestGlobals.orgIdWithCampSignedUp;
 			Console.WriteLine (query);
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);
 			Test mTest = new Test(request);

@@ -21,7 +21,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
         }
 
-        //[Test()]
+        [Test()]
         public static void getCampaign()
         {
             //Setup strings

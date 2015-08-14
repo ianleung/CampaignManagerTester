@@ -15,15 +15,7 @@ namespace ConsoleApplication1
 			this.campaignDescription = CamDesc;
 			this.offerId = OfferId;
 			this.consentText = ConsentTxt;
-            this.fields = new object[4];
-            string name = "email";
-            fields[0] = name;
-            string description = "Email";
-            fields[1] = description;
-            string type = "email";
-            fields[2] = type;
-            bool required = true;
-            fields[3] = required;
+            this.fields = new CampaignManagerFormFieldsJSON[4];
 		}
 
 		public string orgId;
@@ -32,14 +24,19 @@ namespace ConsoleApplication1
 		public string campaignDescription;
 		public string offerId;
 		public string consentText;
-		public object[] fields;
+		public CampaignManagerFormFieldsJSON[] fields;
 
 
 		public override string ToString()
 		{
-			return "orgId: " + orgId + "\n" + "slug: " + slug + "\n" + "campaignName: " + campaignName + "\n" +
-            "campaignDescription: " + campaignDescription + "\n" + "offerId: " + offerId + "\n" + 
-            "consentText: " + consentText + "\n" + "fields: " + fields.ToString() + "\n";
+            string ret = "";
+            ret += "orgId: " + orgId + "\n" + "slug: " + slug + "\n" + "campaignName: " + campaignName + "\n" +
+            "campaignDescription: " + campaignDescription + "\n" + "offerId: " + offerId + "\n" +
+            "consentText: " + consentText + "\n";
+            ret += "fields: " + this.fields[0].ToString() + "\n";
+            ret += this.fields[1].ToString() + "\n";
+            ret += this.fields[2].ToString() + "\n";
+            return ret;
 		}
 	}
 
@@ -56,7 +53,7 @@ namespace ConsoleApplication1
 
 		public override string ToString ()
 		{
-			return "";
+			return "Name: " + this.name + " required: " + required.ToString();
 		}
 	}
 

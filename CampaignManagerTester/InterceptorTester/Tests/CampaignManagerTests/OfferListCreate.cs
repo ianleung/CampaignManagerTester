@@ -50,7 +50,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
-			//Console.WriteLine (HTTPSCalls.result.Value.Substring (7, 36));
+			Console.WriteLine (HTTPSCalls.result.Value.Substring (7, 36));
 			Console.WriteLine(HTTPSCalls.result.Value);
 			Console.WriteLine(HTTPSCalls.result.Key.ToString());
 			TestGlobals.offerId = HTTPSCalls.result.Value.Substring (7, 36);

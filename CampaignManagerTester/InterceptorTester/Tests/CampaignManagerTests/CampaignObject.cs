@@ -42,7 +42,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 
         //TODO: Do this when API is legible
-        //[Test()]
+        [Test()]
         public static void updateCampaign()
         {
 			Console.WriteLine (TestGlobals.campaignId);

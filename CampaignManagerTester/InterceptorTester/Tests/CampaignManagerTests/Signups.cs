@@ -25,7 +25,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		}
 
         //TODO: Check w/ someone to see if the nonsense error messages are logged in JIRA already
-		//[Test()]
+		[Test()]
 		public static void newSignUp()
 		{
             string query = "/campaign-manager/Signups";
@@ -45,7 +45,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		}
 
 
-		//[Test()]
+		[Test()]
 		public static void optOut()
 		{
 			string query = "/campaign-manager/Signups";

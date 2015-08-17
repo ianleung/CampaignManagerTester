@@ -24,7 +24,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             TestGlobals.setup();
         }
 
-        //[Test()]
+        [Test()]
         public static void orgDetailsHappyPath()
         {
             //Setup strings
@@ -44,7 +44,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
 
-        //[Test()]
+        [Test()]
         public static void orgUpdateHappyPath()
         {
             //Setup strings

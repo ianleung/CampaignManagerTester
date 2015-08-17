@@ -25,7 +25,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             TestGlobals.setup();
         }
 
-        //[Test()]
+        [Test()]
         public static void subEmailForCouponHappyPath()
         {
             //Setup strings

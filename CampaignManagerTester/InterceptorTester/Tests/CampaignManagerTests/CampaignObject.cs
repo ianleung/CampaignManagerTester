@@ -68,13 +68,10 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         [Test()]
         public static void removeCampaign()
         {
-            //Setup strings
-            
-			//CampaignList.createCampaign ();
+            CampaignList.createCampaign ();
 			Console.WriteLine (TestGlobals.campaignId);
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns/" + TestGlobals.campaignId+ "?"
-			+ "orgId=" + TestGlobals.orgIdWithCampSignedUp, null);
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns/" + TestGlobals.campaignId, null);
 
             Test mTest = new Test(request);
             HttpClient client = new HttpClient();

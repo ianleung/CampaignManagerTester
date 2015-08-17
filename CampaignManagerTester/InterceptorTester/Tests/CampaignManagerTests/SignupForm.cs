@@ -32,7 +32,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			jsonList [0] = new CampaignManagerFormFieldsJSON ("email", true);
 			jsonList [1] = new CampaignManagerFormFieldsJSON ("firstname", true);
 			jsonList [2] = new CampaignManagerFormFieldsJSON ("lastname", true);
-			CampaignManagerFormJSON camMan = new CampaignManagerFormJSON (orgId, "ABC1", "ABC1 Sign Up Campaign", "All the ABC deals", TestGlobals.offerId, "Yes I agree to sign up");
+			CampaignManagerFormJSON camMan = new CampaignManagerFormJSON (orgId, "ABC"+TestGlobals.orgIdCreated, "ABC1 Sign Up Campaign", "All the ABC deals", TestGlobals.offerId, "Yes I agree to sign up");
 
 			camMan.fields = jsonList;
 			return camMan;
@@ -89,8 +89,10 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			HttpClient client = new HttpClient ();
             client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 
-            //Console.WriteLine(postForm.getJson().ToString());
-
+            if (campaign.fields != null)
+            {
+                Console.WriteLine(campaign.ToString());
+            }
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
 			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
             Console.WriteLine(statusCode);

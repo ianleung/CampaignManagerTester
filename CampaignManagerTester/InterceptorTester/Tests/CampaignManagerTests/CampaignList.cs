@@ -25,10 +25,25 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
+		public static void newOffer()
+		{
+			string query = "campaign-manager/Offers/?orgId=" + TestGlobals.orgIdWithCampSignedUp;
+			OfferJSON json = new OfferJSON ("new offer for QA testing", TestGlobals.orgIdWithCampSignedUp, "123", "blah blah blah");
+			GenericRequest postOffer = new GenericRequest (TestGlobals.campaignServer, query, json);
+			Test mTest = new Test (postOffer);
+			HttpClient client = new HttpClient ();
+			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
+			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
+
+			TestGlobals.offerId = HTTPSCalls.result.Value.Substring (7, 36);
+
+		}
+
 		public static CampaignJSON newCampaign()
 		{
+			newOffer ();
 			CampaignSegmentsJSON[] jsonList = new CampaignSegmentsJSON[3];
-			jsonList [0] = new CampaignSegmentsJSON ("A", null);
+			jsonList [0] = new CampaignSegmentsJSON ("A", TestGlobals.offerId);
 			jsonList [1] = new CampaignSegmentsJSON ("B", null);
 			jsonList [2] = new CampaignSegmentsJSON ("C", null);
 
@@ -41,7 +56,6 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		public static void createCampaign()
 		{
 
-			//SignupForm.createSignUpForms ();
 			string query = "/campaign-manager/Campaigns?orgId=" + TestGlobals.orgIdWithCampSignedUp;
 			Console.WriteLine (query);
 			CampaignJSON camp = newCampaign ();
@@ -53,13 +67,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
 
-            if(!statusCode.Equals("200"))
-            {
-                Console.WriteLine("Server: " + TestGlobals.campaignServer);
-                Console.WriteLine(HTTPSCalls.result.Key.ToString());
-                Console.WriteLine(HTTPSCalls.result.Value);
-                Console.WriteLine(camp.ToString());
-            }
+           	Console.WriteLine("Server: " + TestGlobals.campaignServer);
+            Console.WriteLine(HTTPSCalls.result.Key.ToString());
+            Console.WriteLine(HTTPSCalls.result.Value);
+            Console.WriteLine(camp.ToString());
+
 			Assert.AreEqual ("200", statusCode);
             //??? Campaign id is an input parameter
             TestGlobals.campaignId = HTTPSCalls.result.Value.Substring(7, 36);

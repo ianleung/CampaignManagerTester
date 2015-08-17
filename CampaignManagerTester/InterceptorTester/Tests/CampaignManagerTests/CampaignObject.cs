@@ -21,7 +21,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
         }
 
-        //[Test()]
+        [Test()]
         public static void getCampaign()
         {
             //Setup strings
@@ -45,29 +45,15 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         //[Test()]
         public static void updateCampaign()
         {
-            //Setup strings
-            
-			CampaignList.createCampaign ();
-
-			CampaignJSON campJSON = CampaignList.newCampaign ();
-
-			CampaignSegmentsJSON[] jsonList = new CampaignSegmentsJSON[3];
-			jsonList [0] = new CampaignSegmentsJSON ("A", "e310d9ef-554a-408d-8b8e-2abf28722716");
-			jsonList [1] = new CampaignSegmentsJSON ("B", null);
-			jsonList [2] = new CampaignSegmentsJSON ("C", null);
-
-			CampaignJSON camp = new CampaignJSON ("QA testing update", "This is an update for QA testing", TestGlobals.orgIdWithCampSignedUp, "2015-06-23 14:00", "2015-06-24 14:00");
-			camp.segments = jsonList;
-
 			Console.WriteLine (TestGlobals.campaignId);
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns/" + TestGlobals.campaignId + "?"
-									+ "orgId=" + TestGlobals.orgIdWithCampSignedUp, camp);
-
-            Test mTest = new Test(request);
+			string query = "/campaign-manager/Campaigns/" + TestGlobals.campaignId;
+			CampaignJSON camp = CampaignList.newCampaign ();
+			GenericRequest updateCamp = new GenericRequest (TestGlobals.campaignServer, query, camp);
+			Test mTest = new Test(updateCamp);
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
-            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.PUT,client));
+            AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.PUT, client));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
             Console.WriteLine(HTTPSCalls.result.Key.ToString());

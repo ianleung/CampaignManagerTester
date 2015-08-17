@@ -28,12 +28,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		//[Test()]
 		public static void newSignUp()
 		{
-            OrganizationTest.createOrganization();
-
-
-
-
-			string query = "/campaign-manager/Signups";
+            string query = "/campaign-manager/Signups";
 			CampaignSignUpJSON campaign = new CampaignSignUpJSON(TestGlobals.slug);
 			GenericRequest postSignUp = new GenericRequest (TestGlobals.campaignServer, query, campaign);
             Test mtest = new Test(postSignUp);

@@ -27,7 +27,7 @@ namespace ConsoleApplication1
 
 		public override string ToString()
 		{
-			return "name: " + name + "\ndescription: " + description + "\norgId: " + orgId + "\nendDate: " + endDate + "\nsegments: " + segments.ToString();
+			return "id: " + id + "\nname: " + name + "\ndescription: " + description + "\norgId: " + orgId + "\nendDate: " + endDate + "\nsegments: " + segments.ToString();
 		}
 	}
 

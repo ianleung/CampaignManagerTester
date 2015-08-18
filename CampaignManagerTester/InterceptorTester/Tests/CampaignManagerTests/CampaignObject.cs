@@ -40,6 +40,18 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
 
+		public static UpdateCampaignJSON updateCampaign(string campaignId)
+		{
+			UpdateCampaignSegmentsJSON[] jsonList = new UpdateCampaignSegmentsJSON[3];
+			jsonList [0] = new UpdateCampaignSegmentsJSON ("A", null);
+			jsonList [1] = new UpdateCampaignSegmentsJSON ("B", null);
+			jsonList [2] = new UpdateCampaignSegmentsJSON ("C", null);
+
+			UpdateCampaignJSON camp = new UpdateCampaignJSON (campaignId, "QA testing", "This is a campaign for QA testing", TestGlobals.orgIdWithCampSignedUp, "2015-06-23 14:00", "2015-06-24 14:00");
+			camp.segments = jsonList;
+			return camp;
+		}
+
 
         //TODO: Do this when API is legible
         [Test()]
@@ -47,8 +59,12 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         {
 			Console.WriteLine (TestGlobals.campaignId);
 
+			CampaignList.createCampaign ();
+
 			string query = "/campaign-manager/Campaigns/" + TestGlobals.campaignId;
-			CampaignJSON camp = CampaignList.newCampaign ();
+			Console.WriteLine (query);
+
+			UpdateCampaignJSON camp = updateCampaign(TestGlobals.campaignId);
 			GenericRequest updateCamp = new GenericRequest (TestGlobals.campaignServer, query, camp);
 			Test mTest = new Test(updateCamp);
             HttpClient client = new HttpClient();

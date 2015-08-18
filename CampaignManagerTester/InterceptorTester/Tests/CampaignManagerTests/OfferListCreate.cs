@@ -40,6 +40,22 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		}
 
 		[Test()]
+		public static void getSingleOffer()
+		{
+			string query = "campaign-manager/Offers/" + TestGlobals.offerId;
+			Console.WriteLine (query);
+			GenericRequest getOffer = new GenericRequest (TestGlobals.campaignServer, query, null);
+			Test mTest = new Test (getOffer);
+			HttpClient client = new HttpClient ();
+			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken ();
+			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.GET, client));
+			string statusCode = HTTPSCalls.result.Key.GetValue ("StatusCode").ToString ();
+			Console.WriteLine ("Status Code: " + statusCode);
+			Console.WriteLine (HTTPSCalls.result.Value);
+			Assert.AreEqual ("200", statusCode);
+		}
+
+		[Test()]
 		public static void createNewOffer()
 		{
 			string query = "campaign-manager/Offers/?orgId=" + TestGlobals.orgIdWithCampSignedUp;

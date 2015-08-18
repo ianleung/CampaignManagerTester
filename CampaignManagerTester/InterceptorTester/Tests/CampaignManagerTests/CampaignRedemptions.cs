@@ -29,8 +29,10 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;
 
+            //Should be publication ID, not org ID
             string query = "dwh/Redemptions?"
             + "orgId=" + orgId + "&"
+            + "publicationId="  + TestGlobals.publicationId + "&"
             + "timeFilter=" + timeFilter + "&"
             + "startdate=" + startDate + "&"
             + "enddate=" + endDate;

@@ -50,6 +50,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             AsyncContext.Run(async () => await new HTTPSCalls().runTest(mTest, HTTPOperation.GET));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
+            Console.WriteLine(HTTPSCalls.result.Key.ToString());
+            Console.WriteLine(HTTPSCalls.result.Value);
             Assert.AreEqual("200", statusCode);
         }
     }

@@ -24,12 +24,12 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void campaignRedemptionHappyPath()
         {
             //int;
-            string orgId = TestGlobals.orgId.ToString();
+            string orgId = TestGlobals.orgIdCreated;
             string timeFilter = TestGlobals.timeFilter;
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;
 
-            string query = "/dwh/Redemptions?"
+            string query = "dwh/Redemptions?"
             + "orgId=" + orgId + "&"
             + "timeFilter=" + timeFilter + "&"
             + "startdate=" + startDate + "&"
@@ -37,7 +37,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);
 
-            Console.WriteLine(query.ToString());
+            Console.WriteLine(TestGlobals.campaignServer+query.ToString());
 
             Test mTest = new Test(request);
             HttpClient client = new HttpClient();

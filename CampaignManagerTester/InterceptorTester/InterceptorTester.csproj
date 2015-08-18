@@ -142,7 +142,7 @@
     <Compile Include="JSON\OfferJSON.cs" />
     <Compile Include="JSON\CampaignJSON.cs" />
     <Compile Include="JSON\OfferUpdateJSON.cs" />
-    <Compile Include="Tests\CampaignManagerTests\UpdateCampaignJSON.cs" />
+    <Compile Include="JSON\UpdateCampaignJSON.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

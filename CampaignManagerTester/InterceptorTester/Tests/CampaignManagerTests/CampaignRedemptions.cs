@@ -24,7 +24,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void campaignRedemptionHappyPath()
         {
             //int;
-            string orgId = TestGlobals.orgId.ToString();
+			string orgId = TestGlobals.orgIdWithCampSignedUp;
             string timeFilter = TestGlobals.timeFilter;
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;

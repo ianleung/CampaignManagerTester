@@ -15,6 +15,7 @@ using InterceptorTester.Tests.AdminTests;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
+    /*
 	[TestFixture()]
 	public class DoubleOptIn
     {
@@ -24,12 +25,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
-		/*
 		[Test()]
 		public static void activateSignUp()
 		{
 			string query = "/campaign-manager/Signups/" + id + "/Activate";
 		}
-		*/
     }
+    */
 }

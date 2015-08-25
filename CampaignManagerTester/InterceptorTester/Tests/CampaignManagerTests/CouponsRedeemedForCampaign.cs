@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
+    /*
     [TestFixture()]
     class CouponsRedeemedForCampaign
     {
@@ -27,7 +28,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string slug = TestGlobals.slug;
             string redeemedDate = TestGlobals.redeemedDate;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/CouponRedeemed?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/api/dwh/CouponRedeemed?"
             + "slug=" + slug + "&"
             + "redeemedDate=" + redeemedDate, null);
 
@@ -42,4 +43,5 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
     }
+     */
 }

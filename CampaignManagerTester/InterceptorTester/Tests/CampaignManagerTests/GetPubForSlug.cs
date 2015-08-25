@@ -15,6 +15,7 @@ using InterceptorTester.Tests.AdminTests;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
+    /*
     [TestFixture()]
     class GetPubForSlug
     {
@@ -33,7 +34,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //int;
             string slug = TestGlobals.slug;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/PublicationList?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/api/dwh/PublicationList?"
             + "slug=" + slug, null);
 
             Test mTest = new Test(request);
@@ -47,4 +48,5 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
     }
+     */
 }

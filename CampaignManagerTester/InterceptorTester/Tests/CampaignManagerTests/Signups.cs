@@ -24,7 +24,6 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			TestGlobals.setup ();
 		}
 
-        //TODO: Check w/ someone to see if the nonsense error messages are logged in JIRA already
 		[Test()]
 		public static void newSignUp()
 		{
@@ -48,8 +47,9 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void optOut()
 		{
-			string query = "/campaign-manager/Signups";
-			SignUpJSON signUp = new SignUpJSON ("george@costanza.com", "umbra");
+            string query = "/campaign-manager/Signups?email=blah&slug=ABC448";
+			SignUpJSON signUp = new SignUpJSON ("george%40costanza.com", "umbra");
+            Console.WriteLine(signUp.ToString());
 			GenericRequest deleteSignUp = new GenericRequest (TestGlobals.campaignServer, query, signUp);
 			Test mtest = new Test (deleteSignUp);
 			HttpClient client = new HttpClient ();
@@ -57,8 +57,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mtest, HTTPOperation.DELETE, client));
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine(statusCode);
-            Console.WriteLine(HTTPSCalls.result.Value.ToString());
             Console.WriteLine(HTTPSCalls.result.Key.ToString());
+            Console.WriteLine(HTTPSCalls.result.Value.ToString());
             Assert.AreEqual("204", statusCode);
 		}
     }

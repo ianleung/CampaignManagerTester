@@ -15,6 +15,7 @@ using InterceptorTester.Tests.AdminTests;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
+    /*
     [TestFixture()]
     class SubCountForPub
     {
@@ -34,7 +35,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
             string date = TestGlobals.date;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/SubscriptionsCount?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/api/dwh/SubscriptionsCount?"
             + "publicationId=" + publicationId + "&"
             + "status=" + status + "&"
             + "date=" + date, null);
@@ -50,4 +51,5 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
     }
+     */
 }

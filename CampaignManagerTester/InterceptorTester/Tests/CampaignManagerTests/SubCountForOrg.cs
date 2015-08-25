@@ -15,6 +15,7 @@ using InterceptorTester.Tests.AdminTests;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
+    /*
     [TestFixture()]
     class SubCountForOrg
     {
@@ -30,7 +31,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			//Setup strings
             string orgId = TestGlobals.orgIdWithCampSignedUp;
 
-			string query = "/dwh/SubscriptionCount?"
+			string query = "/api/dwh/SubscriptionCount?"
 			               + "orgId=" + orgId;
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);
@@ -46,4 +47,5 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
     }
+     */
 }

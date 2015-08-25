@@ -16,6 +16,7 @@ using InterceptorTester.Tests.AdminTests;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
+    /*
     [TestFixture()]
     class SubEmailFromCoupon
     {
@@ -31,7 +32,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //Setup strings
             string couponCode = TestGlobals.couponCode;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/SubscriberDetails?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/api/dwh/SubscriberDetails?"
             + "couponCode=" + couponCode, null);
 
             Test mTest = new Test(request);
@@ -45,4 +46,5 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
     }
+     */
 }

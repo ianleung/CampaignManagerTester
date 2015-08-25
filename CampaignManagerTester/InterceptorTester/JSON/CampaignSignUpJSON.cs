@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using System.Collections.Generic;
 
 namespace ConsoleApplication1
 {
@@ -10,21 +11,46 @@ namespace ConsoleApplication1
         //TODO: Figure out what the givens are for this
 		public CampaignSignUpJSON(string Slug)
 		{
+            //this.message = new MessageJSON(Slug, "george@costanza.com");
             this.slug = Slug;
-            this.fields = new object[1];
-            string email = "myEmail@webnet.org";
-            fields[0] = email;
+            List<KVPJSON> kvpl = new List<KVPJSON>();
+            kvpl.Add(new KVPJSON("george@costanza.com"));
+            this.fields = kvpl;
 		}
 
-		public string slug;
-		public object[] fields;
+        public List<KVPJSON> fields;
+        public string slug;
 
 
 		public override string ToString()
 		{
-            return slug + "   " + fields[0].ToString();
+            return "";
 		}
 	}
+
+    public class MessageJSON
+    {
+        public MessageJSON(string slug, string email)
+        {
+            this.slug = slug;
+            List<KVPJSON> kvpl = new List<KVPJSON>();
+            kvpl.Add(new KVPJSON(email));
+            this.fields = kvpl;
+        }
+        public string slug;
+        public List<KVPJSON> fields;
+    }
+
+    public class KVPJSON
+    {
+        public KVPJSON(string s)
+        {
+            this.key = "email";
+            this.value = s;
+        }
+        public string key;
+        public string value;
+    }
 
 	public class CampaignSignUpFieldsJSON
 	{
@@ -53,6 +79,11 @@ namespace ConsoleApplication1
 
 		public string email;
 		public string slug;
+
+        public string ToString()
+        {
+            return "Email: " + email + "   Slug: " + slug;
+        }
 	}
 
 }

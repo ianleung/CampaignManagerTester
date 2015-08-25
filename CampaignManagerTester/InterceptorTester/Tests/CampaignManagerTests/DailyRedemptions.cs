@@ -15,6 +15,7 @@ using InterceptorTester.Tests.AdminTests;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
+    /*
     [TestFixture()]
     class DailyRedemptions
     {
@@ -35,7 +36,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //Guid;
             string campaignId = TestGlobals.campaignId;
 
-			string query = "/dwh/RedemptionsDaily?"
+			string query = "/api/dwh/RedemptionsDaily?"
 			              	+ "orgId=" + orgId + "&"
 			               + "timeFilter=" + timeFilter + "&"
 			               + "startdate=" + startDate + "&"
@@ -55,4 +56,5 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
     }
+    */
 }

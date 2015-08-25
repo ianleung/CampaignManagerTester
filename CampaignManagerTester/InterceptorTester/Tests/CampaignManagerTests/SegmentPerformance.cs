@@ -15,6 +15,7 @@ using InterceptorTester.Tests.AdminTests;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
+    /*
     [TestFixture()]
     class SegmentPerformance
     {
@@ -35,7 +36,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //Guid;
             string campaignId = TestGlobals.campaignId;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/CampaignSegmentPerformance?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/api/dwh/CampaignSegmentPerformance?"
             + "orgId=" + orgId + "&"
             + "timeFilter=" + timeFilter + "&"
             + "startdate=" + startDate + "&"
@@ -49,7 +50,9 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
             Console.WriteLine(HTTPSCalls.result.Key.ToString());
+            Console.WriteLine(HTTPSCalls.result.Value.ToString());
             Assert.AreEqual("200", statusCode);
         }
     }
+     */
 }

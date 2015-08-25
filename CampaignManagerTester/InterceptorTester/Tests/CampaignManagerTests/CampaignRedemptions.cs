@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
+    /*
     [TestFixture()]
     class CampaignRedemptions
     {
@@ -34,7 +35,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string endDate = TestGlobals.endDate;
 
             //Should be publication ID, not org ID
-            string query = "dwh/Redemptions?"
+            string query = "api/dwh/Redemptions?"
             + "orgId=" + orgId + "&"
             + "publicationId="  + TestGlobals.publicationId + "&"
             + "timeFilter=" + timeFilter + "&"
@@ -55,4 +56,5 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
     }
+     */
 }

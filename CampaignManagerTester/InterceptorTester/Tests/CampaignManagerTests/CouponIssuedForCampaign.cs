@@ -11,6 +11,7 @@ using InterceptorTester.Tests.AdminTests;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
+    /*
     [TestFixture()]
     class CouponIssuedForCampaign
     {
@@ -27,7 +28,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string slug = TestGlobals.slug;
             string issuedDate = TestGlobals.issuedDate;
 
-			string query = "/dwh/CouponsIssued?"
+			string query = "/api/dwh/CouponsIssued?"
 			               + "slug=" + slug + "&"
 			               + "issuedDate=" + issuedDate;
 
@@ -44,4 +45,5 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
     }
+    */
 }

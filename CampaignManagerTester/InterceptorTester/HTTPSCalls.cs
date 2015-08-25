@@ -191,6 +191,7 @@ namespace ConsoleApplication1{
                     
                     // Newtonsoft Json serialization
                     var upContent = JObject.FromObject(contentToPush);
+                    Console.WriteLine(upContent.ToString());
                     var strContent = new System.Net.Http.StringContent(upContent.ToString(), Encoding.UTF8, "application/json");
 
                     using (HttpResponseMessage response = await client.PostAsync(qUri, strContent))
@@ -225,6 +226,7 @@ namespace ConsoleApplication1{
 
                     // Newtonsoft Json serialization
                     var upContent = JObject.FromObject(contentToPush);
+                    //Console.WriteLine(upContent.ToString());
                     var strContent = new System.Net.Http.StringContent(upContent.ToString(), Encoding.UTF8, "application/json");
 
                     using (HttpResponseMessage response = await client.PostAsync(qUri, strContent))

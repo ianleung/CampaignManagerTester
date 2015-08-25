@@ -15,6 +15,7 @@ using InterceptorTester.Tests.AdminTests;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
+    /*
     [TestFixture()]
     class DailySubscriptions
     {
@@ -33,7 +34,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/SubscriptionsDaily?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/api/dwh/SubscriptionsDaily?"
             + "orgId=" + orgId + "&"
             + "timeFilter=" + timeFilter + "&"
             + "startdate=" + startDate + "&"
@@ -50,4 +51,5 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
     }
+     */
 }

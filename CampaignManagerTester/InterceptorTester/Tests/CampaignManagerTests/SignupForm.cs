@@ -37,7 +37,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			camMan.fields = jsonList;
 			return camMan;
 		}
-
+        /*
 		public static CampaignSignUpJSON signUp()
 		{
 			CampaignSignUpFieldsJSON[] jsonList = new CampaignSignUpFieldsJSON[4];
@@ -49,7 +49,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			camSignUp.fields = jsonList;
 			return camSignUp;
 		}
-
+        */
 
 		[Test()]
 		public static void getSignUpFormList()

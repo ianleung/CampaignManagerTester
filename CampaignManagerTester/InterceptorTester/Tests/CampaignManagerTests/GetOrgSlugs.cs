@@ -15,6 +15,7 @@ using InterceptorTester.Tests.AdminTests;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
+    /*
     [TestFixture()]
     class GetOrgSlugs
     {
@@ -33,7 +34,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //int;
             string orgId = TestGlobals.orgId.ToString();
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/dwh/SlugsRequest?"
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/api/dwh/SlugsRequest?"
             + "orgId=" + orgId, null);
 
             Test mTest = new Test(request);
@@ -47,4 +48,5 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
     }
+     */
 }

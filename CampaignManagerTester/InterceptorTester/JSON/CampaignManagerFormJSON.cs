@@ -15,7 +15,7 @@ namespace ConsoleApplication1
 			this.campaignDescription = CamDesc;
 			this.offerId = OfferId;
 			this.consentText = ConsentTxt;
-            this.fields = new CampaignManagerFormFieldsJSON[4];
+            //this.fields = new CampaignManagerFormFieldsJSON[4];
 		}
 
 		public string orgId;
@@ -25,7 +25,6 @@ namespace ConsoleApplication1
 		public string offerId;
 		public string consentText;
 		public CampaignManagerFormFieldsJSON[] fields;
-
 
 		public override string ToString()
 		{
@@ -44,7 +43,7 @@ namespace ConsoleApplication1
 	{
 		public CampaignManagerFormFieldsJSON(string Name, bool Required)
 		{
-            this.name = Name.ToString();
+            this.name = Name;
 			this.required = Required;
 		}
 
@@ -53,7 +52,7 @@ namespace ConsoleApplication1
 
 		public override string ToString ()
 		{
-			return "Name: " + this.name + " required: " + required.ToString();
+			return "name: " + this.name + " required: " + required.ToString();
 		}
 	}
 

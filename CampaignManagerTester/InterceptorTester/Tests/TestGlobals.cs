@@ -77,7 +77,7 @@ namespace ConsoleApplication1
                 username = ConfigurationManager.ConnectionStrings["Username"].ConnectionString;
                 password = ConfigurationManager.ConnectionStrings["Password"].ConnectionString;
 
-				slug = "ABC448";
+				slug = "ABC443";
                 startDate = ConfigurationManager.ConnectionStrings["startDate"].ConnectionString;
                 endDate = ConfigurationManager.ConnectionStrings["endDate"].ConnectionString;
                 redeemedDate = ConfigurationManager.ConnectionStrings["redeemedDate"].ConnectionString;
@@ -93,7 +93,7 @@ namespace ConsoleApplication1
 				applicationKey = ConfigurationManager.ConnectionStrings["applicationKey"].ConnectionString;
 				sessionKey = ConfigurationManager.ConnectionStrings["sessionKey"].ConnectionString;
 
-				orgIdCreated = "448";
+				orgIdCreated = "443";
 				orgIdWithCampSignedUp = orgIdCreated;
                 if (orgIdCreated == null)
                 {

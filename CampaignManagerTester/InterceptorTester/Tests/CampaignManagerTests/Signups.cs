@@ -47,8 +47,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void optOut()
 		{
-            string query = "/campaign-manager/Signups?email=blah&slug=ABC448";
-			SignUpJSON signUp = new SignUpJSON ("george%40costanza.com", "umbra");
+            string query = "/campaign-manager/Signups?email=george%40costanza.com&slug="+TestGlobals.slug;
+			SignUpJSON signUp = new SignUpJSON ("george%40costanza.com", TestGlobals.slug);
             Console.WriteLine(signUp.ToString());
 			GenericRequest deleteSignUp = new GenericRequest (TestGlobals.campaignServer, query, signUp);
 			Test mtest = new Test (deleteSignUp);

@@ -31,8 +31,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //Setup strings
 			string id = TestGlobals.orgIdWithCampSignedUp;
 
-			string query = "/campaign-manager/Organizations?"
-							+ "id=" + id;
+			string query = "/campaign-manager/Organizations/"
+							+ id;
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);
 
@@ -50,7 +50,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         [Test()]
         public static void orgUpdateHappyPath()
         {
-            Console.WriteLine("\norgUpdate Happy Path Test");
+            Console.WriteLine("\norgUpdateHappyPath Test");
             //Setup strings
 			string id = TestGlobals.orgIdWithCampSignedUp;
             
@@ -62,7 +62,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             json.privacyPolicy = "stuff";
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Organizations/"
-				+ "id=" + id, json);
+				+ id, json);
 
             Test mTest = new Test(request);
 			HttpClient client = new HttpClient ();

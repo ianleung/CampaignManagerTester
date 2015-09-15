@@ -82,7 +82,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
                 System.Threading.Thread.Sleep(5000);
             }
             */
-
+            Console.WriteLine("\ncreateSignUpForms Test");
 			string query = "/campaign-manager/SignupForms?orgId=" + TestGlobals.orgIdCreated;
 			CampaignManagerFormJSON campaign = postSignUpForm(TestGlobals.orgIdCreated);
 			GenericRequest postForm = new GenericRequest (TestGlobals.campaignServer, query, campaign);

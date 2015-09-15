@@ -56,6 +56,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			Console.WriteLine ("Status Code: " + statusCode);
 			Console.WriteLine (HTTPSCalls.result.Value);
 			Assert.AreEqual ("200", statusCode);
+            Offers.removeOffer();
 		}
 
 		[Test()]

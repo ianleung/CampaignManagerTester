@@ -34,7 +34,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			HttpClient client = new HttpClient ();
 			client.DefaultRequestHeaders.Authorization = AuthenticateTest.getSessionToken();
 			AsyncContext.Run (async () => await new HTTPSCalls ().runTest (mTest, HTTPOperation.POST, client));
-
+            //setting global offer ID to the new offer created
 			TestGlobals.offerId = HTTPSCalls.result.Value.Substring (7, 36);
 
 		}
@@ -73,7 +73,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Console.WriteLine(camp.ToString());
 
 			Assert.AreEqual ("200", statusCode);
-            //??? Campaign id is an input parameter
+            //Setting global campaign ID to the new campaign created
             TestGlobals.campaignId = HTTPSCalls.result.Value.Substring(7, 36);
 		}
 
@@ -95,6 +95,10 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Console.WriteLine(HTTPSCalls.result.Key.ToString());
             Console.WriteLine(HTTPSCalls.result.Value);
 			Assert.AreEqual("200", statusCode);
+            Console.WriteLine(TestGlobals.campaignId);
+            CampaignObject.removeCampaign();
+            Console.WriteLine(TestGlobals.offerId);
+
 		}
 
     }

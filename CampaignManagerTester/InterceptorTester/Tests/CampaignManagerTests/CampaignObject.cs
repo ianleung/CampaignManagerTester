@@ -24,6 +24,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         [Test()]
         public static void getCampaign()
         {
+            CampaignList.createCampaign();
             Console.WriteLine("\ngetCampaign Test");
             //Setup strings
             GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/campaigns/"
@@ -61,8 +62,6 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Console.WriteLine("\nupdateCampaign Test");
 			Console.WriteLine (TestGlobals.campaignId);
 
-			CampaignList.createCampaign ();
-
 			string query = "/campaign-manager/Campaigns/" + TestGlobals.campaignId;
 			Console.WriteLine (query);
 
@@ -83,11 +82,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 
 
-        [Test()]
+        //[Test()]
         public static void removeCampaign()
         {
             Console.WriteLine("\nRemove Campaign Test");
-            CampaignList.createCampaign ();
+            //CampaignList.createCampaign ();
 			Console.WriteLine (TestGlobals.campaignId);
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Campaigns/" + TestGlobals.campaignId, null);

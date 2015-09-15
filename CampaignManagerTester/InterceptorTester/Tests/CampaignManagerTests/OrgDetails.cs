@@ -31,7 +31,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             //Setup strings
 			string id = TestGlobals.orgIdWithCampSignedUp;
 
-			string query = "/campaign-manager/Organizations/"
+			string query = "/campaign-manager/Organizations?id="
 							+ id;
 
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);

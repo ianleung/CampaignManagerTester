@@ -27,6 +27,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         [Test()]
         public static void listOrgsHappyPath()
         {
+            Console.WriteLine("\nlistOrgsHappyPath Test");
             GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Organizations", null);
 
             Test mTest = new Test(request);

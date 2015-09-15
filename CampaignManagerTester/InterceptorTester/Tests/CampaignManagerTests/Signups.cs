@@ -27,6 +27,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void newSignUp()
 		{
+            Console.WriteLine("\nnewSignUp Test");
             string query = "/campaign-manager/Signups";
 			CampaignSignUpJSON campaign = new CampaignSignUpJSON(TestGlobals.slug);
 			GenericRequest postSignUp = new GenericRequest (TestGlobals.campaignServer, query, campaign);
@@ -47,6 +48,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void optOut()
 		{
+            Console.WriteLine("\noptOut Test");
             string query = "/campaign-manager/Signups?email=george%40costanza.com&slug="+TestGlobals.slug;
 			SignUpJSON signUp = new SignUpJSON ("george%40costanza.com", TestGlobals.slug);
             Console.WriteLine(signUp.ToString());

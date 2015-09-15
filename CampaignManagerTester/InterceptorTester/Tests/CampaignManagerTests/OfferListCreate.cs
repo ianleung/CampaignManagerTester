@@ -28,6 +28,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void getOffers()
 		{
+            Console.WriteLine("\ngetOffers Test");
 			string query = "campaign-manager/Offers?orgId=" + TestGlobals.orgIdWithCampSignedUp;
 			GenericRequest getOffers = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (getOffers);
@@ -43,6 +44,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void getSingleOffer()
 		{
+            Console.WriteLine("\ngetSingleOffer Test");
 			string query = "campaign-manager/Offers/" + TestGlobals.offerId;
 			Console.WriteLine (query);
 			GenericRequest getOffer = new GenericRequest (TestGlobals.campaignServer, query, null);
@@ -59,6 +61,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void createNewOffer()
 		{
+            Console.WriteLine("\ncreateNewOffer Test");
 			string query = "campaign-manager/Offers/?orgId=" + TestGlobals.orgIdWithCampSignedUp;
 			OfferJSON json = new OfferJSON ("new offer for QA testing", TestGlobals.orgIdWithCampSignedUp, "123", "blah blah blah");
 			GenericRequest postOffer = new GenericRequest (TestGlobals.campaignServer, query, json);

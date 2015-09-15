@@ -27,6 +27,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void getSpecialOffer()
 		{
+            Console.WriteLine("\ngetSpecialOffer Test");
 			string query = "/campaign-manager/Offers/" + TestGlobals.offerId + "?&orgId=" + TestGlobals.orgIdWithCampSignedUp;
 			GenericRequest getOffer = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (getOffer);
@@ -72,6 +73,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		//[Test()]
 		public static void removeOffer()
 		{
+            Console.WriteLine("\nremoveOffer Test");
 			string query = "/campaign-manager/Offers/" + TestGlobals.offerId;
 			GenericRequest deleteOffer = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (deleteOffer);

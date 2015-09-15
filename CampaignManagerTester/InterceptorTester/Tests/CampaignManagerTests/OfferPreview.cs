@@ -27,6 +27,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         [Test()]
         public static void offerPreviewHappyPath()
         {
+            Console.WriteLine("\nofferPreviewHappyPath Test");
             //Setup strings
             //Guid;
             string id = TestGlobals.offerId;

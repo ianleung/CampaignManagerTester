@@ -54,6 +54,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void getSignUpFormList()
 		{
+            Console.WriteLine("\ngetSignUpForm Test");
 			string query = "/campaign-manager/SignupForms?orgId=" +TestGlobals.orgIdCreated;
 			GenericRequest getList = new GenericRequest (TestGlobals.campaignServer, query, null);
 			Test mTest = new Test (getList);

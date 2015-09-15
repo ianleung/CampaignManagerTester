@@ -55,7 +55,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 		[Test()]
 		public static void createCampaign()
 		{
-
+            Console.WriteLine("\ncreateCampaign Test");
 			string query = "/campaign-manager/Campaigns?orgId=" + TestGlobals.orgIdWithCampSignedUp;
 			Console.WriteLine (query);
 			CampaignJSON camp = newCampaign ();
@@ -81,7 +81,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 		[Test()]
 		public static void getRfmCampaigns()
-		{	
+		{
+            Console.WriteLine("\ngetRfmCampaigns Test");
 			string query = "/campaign-manager/Campaigns?orgId=" + TestGlobals.orgIdWithCampSignedUp;
 			Console.WriteLine (query);
 			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, query, null);
@@ -92,6 +93,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 			string statusCode = HTTPSCalls.result.Key.GetValue("StatusCode").ToString();
             Console.WriteLine("Status Code: " + statusCode);
             Console.WriteLine(HTTPSCalls.result.Key.ToString());
+            Console.WriteLine(HTTPSCalls.result.Value);
 			Assert.AreEqual("200", statusCode);
 		}
 

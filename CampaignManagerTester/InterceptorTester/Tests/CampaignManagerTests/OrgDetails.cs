@@ -27,6 +27,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         [Test()]
         public static void orgDetailsHappyPath()
         {
+            Console.WriteLine("\norgDetailsHappyPath Test");
             //Setup strings
 			string id = TestGlobals.orgIdWithCampSignedUp;
 
@@ -49,6 +50,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         [Test()]
         public static void orgUpdateHappyPath()
         {
+            Console.WriteLine("\norgUpdate Happy Path Test");
             //Setup strings
 			string id = TestGlobals.orgIdWithCampSignedUp;
             

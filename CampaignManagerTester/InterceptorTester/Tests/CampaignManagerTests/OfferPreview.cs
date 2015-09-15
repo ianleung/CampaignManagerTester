@@ -36,7 +36,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;
 
-			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Offers/508DBE2E-25EC-4A23-8014-00448E053E2E/Preview/?campaignName="+campaignName+"&campaignDescription="+campaignDescription+"&startDate="+startDate+"&endDate="+endDate, null);
+			GenericRequest request = new GenericRequest(TestGlobals.campaignServer, "/campaign-manager/Offers/" + id + "/Preview/?campaignName="+campaignName+"&campaignDescription="+campaignDescription+"&startDate="+startDate+"&endDate="+endDate, null);
 
             Test mTest = new Test(request);
 			HttpClient client = new HttpClient ();

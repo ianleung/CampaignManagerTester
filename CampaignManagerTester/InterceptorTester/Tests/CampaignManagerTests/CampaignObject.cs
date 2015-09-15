@@ -85,7 +85,7 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         //[Test()]
         public static void removeCampaign()
         {
-            Console.WriteLine("\nRemove Campaign Test");
+            Console.WriteLine("\nremoveCampaign Test");
             //CampaignList.createCampaign ();
 			Console.WriteLine (TestGlobals.campaignId);
 

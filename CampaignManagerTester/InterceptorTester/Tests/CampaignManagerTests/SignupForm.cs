@@ -26,7 +26,8 @@ namespace InterceptorTester.Tests.CampaignManagerTests
 
 		public static CampaignManagerFormJSON postSignUpForm(string orgId)
 		{
-			OfferListCreate.createNewOffer();
+            //Use existing offer, no need to create a new one
+			//OfferListCreate.createNewOffer();
 
 			CampaignManagerFormFieldsJSON[] jsonList = new CampaignManagerFormFieldsJSON[3];
 			jsonList [0] = new CampaignManagerFormFieldsJSON ("email", true);

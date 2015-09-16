@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace InterceptorTester.Tests.CampaignManagerTests
 {
-    /*
+    
     [TestFixture()]
     class CampaignRedemptions
     {
@@ -25,11 +25,11 @@ namespace InterceptorTester.Tests.CampaignManagerTests
         public static void campaignRedemptionHappyPath()
         {
             //int;
-<<<<<<< HEAD
-			string orgId = TestGlobals.orgIdWithCampSignedUp;
-=======
+//<<<<<<< HEAD
+			//string orgId = TestGlobals.orgIdWithCampSignedUp;
+//=======
             string orgId = TestGlobals.orgIdCreated;
->>>>>>> origin/master
+//>>>>>>> origin/master
             string timeFilter = TestGlobals.timeFilter;
             string startDate = TestGlobals.startDate;
             string endDate = TestGlobals.endDate;
@@ -56,5 +56,5 @@ namespace InterceptorTester.Tests.CampaignManagerTests
             Assert.AreEqual("200", statusCode);
         }
     }
-     */
+     
 }
